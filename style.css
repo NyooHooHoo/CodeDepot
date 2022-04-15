@@ -1,11 +1,15 @@
 @font-face {
-  font-family: moderna;
+  font-family: D-DIN;
   src: url("assets/D-DIN.ttf");
 }
 
-* {
-	font-family: moderna;
+@font-face {
+  font-family: D-DIN-Bold;
+  src: url("assets/D-DIN-Bold.otf");
+}
 
+* {
+	font-family: D-DIN;
 }
 
 body {
@@ -25,10 +29,23 @@ body {
 	border-radius: 10px;
 	background-color: #1f3a67ff;
 	text-align: left;
+	height: 125%;
+	transition-duration: .3s;
+	position: relative; 
+}
+
+.course-item:hover {
+	transform: scale(1.02);
+}
+
+.course-footer {
+	position: absolute; 
+    bottom: 0;
+    padding: 10px;
 }
 
 .course-image {
-	max-width:100%;
+	max-width: 100%;
     object-fit: scale-down;
     border-radius: 10px;
     border-bottom-right-radius: 0px;
@@ -37,6 +54,11 @@ body {
 
 .course-information {
 	padding: 10px;
+}
+
+.rating {
+	width: 10%;
+	height: 10%;
 }
 
 .course-title {
@@ -66,11 +88,16 @@ body {
 }
 
 .nav-button:hover {
-	color: #ff9900ff;
+	color: white;
+	background-color: #102547;
 }
 
 .main-content {
 	margin: 5%;
+}
+
+.author {
+	font-family: D-DIN-Bold;
 }
 
 .content-wrapper {
@@ -84,10 +111,11 @@ body {
 .main-title {
 	margin: 20px;
 	margin-bottom: 40px;
-	width: 40%;
+	width: 50%;
 	font-size: 400%;
 	flex-direction: column;
 	text-align: center;
+	font-family: D-DIN-Bold;
 }
 
 
@@ -136,7 +164,7 @@ body {
 }
 
 .active-button {
-	background-color: #151336;
+	background-color: #102547;
 }
 
 .custom-colour {
