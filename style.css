@@ -175,6 +175,11 @@ h1 {
 	margin-top: 50px;
 }
 
+#about-text {
+	width: 650px;
+	display: inline-block
+}
+
 .profile {
 	border-color: #1f3a67ff;
 	border-style: solid;
