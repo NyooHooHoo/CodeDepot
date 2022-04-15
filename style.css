@@ -16,9 +16,28 @@ body {
 	font-size: 175%;
 }
 
-.nav-link {
+.nav-button {
+	padding: 8px;
+	padding-top: 4px;
+	padding-bottom: 5px;
+	border-radius: 5px;
 	font-size: 100%;
 	color: white;
+	text-decoration: none;
+	transition-duration: .3s;
+}
+
+.nav-button:hover {
+	color: #ff9900ff;
+}
+
+.nav-button-container {
+	margin: 5px;
+	padding: 5px;
+}
+
+.active-button {
+	background-color: #151336;
 }
 
 .custom-colour {
