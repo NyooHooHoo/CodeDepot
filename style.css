@@ -16,12 +16,15 @@ body {
 	background-color: #315795ff;
 }
 
-.course-list {
+.courses-list {
+	margin: auto;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
+	
 }
 
-.course {
+.course-item {
+	padding: 10px;
 	border: 1px solid black;
 	background: #1f3a67ff;
 }
