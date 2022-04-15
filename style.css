@@ -1,5 +1,10 @@
+@font-face {
+  font-family: moderna;
+  src: url("assets/coolvetica.otf");
+}
+
 * {
-	font-family: consolas;
+	font-family: moderna;
 
 }
 
@@ -9,6 +14,16 @@
 
 body {
 	background-color: #315795ff;
+}
+
+.course-list {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.course {
+	border: 1px solid black;
+	background: #1f3a67ff;
 }
 
 #content {
@@ -43,7 +58,7 @@ body {
 .content-wrapper {
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: stretch;
 	flex-direction: row;
 	flex-wrap: wrap;
 }
@@ -52,30 +67,46 @@ body {
 	margin: 20px;
 	margin-bottom: 40px;
 	width: 40%;
+	font-size: 400%;
 	flex-direction: column;
 	text-align: center;
 }
 
+
 #search {
-	
 	width: 40%;
 	padding: 10px;
+	padding-left: 20px;
   	border: none;
   	outline: none;
   	border-radius: 25px;
   	border-bottom-right-radius: 0px;
 	border-top-right-radius: 0px;
   	flex-direction: column;
+  	font-size: 150%;
+  	transition-duration: .3s;
+}
 
+#search:focus {
+	width: 50%;
+}
+
+#search:placeholder-shown {
+   font-style: italic;
 }
 
 .search-button {
-	background: none;
+	background: url('assets/search_image.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
 	border: none;
 	cursor: pointer;
+	width: 3%;
+	border: 2px solid orange;
 
-	padding: 10px;
-	background: #ff9900ff;
+	padding: 20px;
+	/*background: #ff9900ff;*/
 	border-radius: 25px;
 	border-bottom-left-radius: 0px;
 	border-top-left-radius: 0px;
