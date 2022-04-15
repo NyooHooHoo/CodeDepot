@@ -70,6 +70,7 @@ body {
 	color: white;
 	margin: 5px;
 	text-align: center;
+	padding-bottom: 2.5rem;
 }
 
 .navbar-brand {
@@ -217,4 +218,5 @@ h1 {
 footer {
 	background: #1f3a67ff;
 	text-align: center;
+	height: 2.5rem;  
 }
