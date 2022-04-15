@@ -161,22 +161,12 @@ h1 {
 	margin-right: auto;
   }
 
-#aidan-profile {
-	height: 100%;
-	width: 100%;
-}
-
-#luka-profile {
-	height: 100%;
-	width: 100%;
-}
-
-#sailesh-profile {
+.profile-pic {
 	height: 100%;
 	width: 100%;
 }
 
 .team-grid-container {
 	display: grid;
-	grid-template-columns: auto auto auto;
+	grid-template-columns: auto auto auto auto;
 }
