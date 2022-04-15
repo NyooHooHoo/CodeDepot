@@ -167,6 +167,21 @@ h1 {
 }
 
 .team-grid-container {
-	display: grid;
-	grid-template-columns: auto auto auto auto;
+	display: inline-grid;
+	grid-template-columns: 350px 350px 350px 350px;
+}
+
+.name-button {
+	color: white;
+	text-decoration: none;
+	transition-duration: .3s;
+}
+
+.name-button:hover {
+	color: #ff9900ff;
+}
+
+footer {
+	background: #1f3a67ff;
+	text-align: center;
 }
