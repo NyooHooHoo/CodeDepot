@@ -13,11 +13,13 @@ body {
 }
 
 .course-list {
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .course {
-	background: ;
+	border: 1px solid black;
+	background: #1f3a67ff;
 }
 
 #content {
