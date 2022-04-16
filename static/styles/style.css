@@ -380,3 +380,52 @@ footer {
     	width: 70%;
   	}
 }
+
+.smallHeader { 
+    padding: 20px;
+    
+}
+
+.submitButton {
+ 
+    background-color: #ff9900;
+    color: white;
+    padding: 14px 40px;
+    margin: 40px 40px;
+    border: 40px;
+    cursor: pointer;
+    width: 120px;
+    opacity: 0.9;
+    transition-duration:.5s;
+    border-radius: 7px;
+}
+
+.submitButton:hover {
+    color:white; 
+    background-color: #CC5500;
+}
+
+.input {
+    background-color: #FFFFFF;
+    color: black;
+    padding: 14px 50px;
+    margin: 0 40px;
+    border: 2px;
+    width: 300px;
+    transition-duration:.5s;
+    border-radius: 4px;
+    border-style:solid; 
+   
+}
+
+.smallHeader {
+    padding-left: 40px;
+    font-size: 155%;
+    color:antiquewhite;
+}
+
+.loginHeader {
+    padding-left:40px;
+    padding-top:40px;
+    color:whitesmoke;
+}
