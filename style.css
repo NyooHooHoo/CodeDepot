@@ -63,6 +63,11 @@ body {
 .favourite {
 	max-width: 100%;
 	object-fit: scale-down;
+  background-image: "assets/star_default.png";
+}
+
+.favourite:hover {
+  background-image: "assets/star_fill.png";
 }
 
 .course-image {

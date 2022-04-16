@@ -111,15 +111,15 @@ class Course {
         <br><br><br><br>
       </div>
       <div class="course-footer">
-        <img class="rating" src="assets/like_default.png" onclick="like()"/>
+        <img class="rating" src="assets/like_default.png" onclick="like()" onmouseover="this.src='assets/like_filled.png'" onmouseout="this.src='assets/like_default.png'"/>
         <t id="rating1" class="rating-value">${this.score}</t>
-        <img class="rating" src="assets/dislike_default.png" onclick="dislike()"/>
+        <img class="rating" src="assets/dislike_default.png" onclick="dislike()" onmouseover="this.src='assets/dislike_filled.png'" onmouseout="this.src='assets/dislike_default.png'"/>
 
         <p></p>
 
         <a class="learn-now" href="${this.url}" target="_blank">LEARN</a>
         <p></p>
-        <img class="favourite" src="assets/star_default.png" onclick="togglefavourite()"/>
+        <img class="favourite" src="assets/star_default.png" onclick="togglefavourite()" onmouseover="this.src='assets/star_fill.png'" onmouseout="this.src='assets/star_default.png'" />
       
       </div>
     </div>
