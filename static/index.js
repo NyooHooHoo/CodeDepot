@@ -66,10 +66,10 @@ var courses = [];
 
 function search() {
 	let input = document.getElementById('search').value;
-  let courselist = document.getElementById("recommended-list");
+  	let courselist = document.getElementById("recommended-list");
 	input = input.toLowerCase();
 
-  courselist.innerHTML = "";
+  	courselist.innerHTML = "";
 
 	for (course of courses) {
 		if (course.title.toLowerCase().includes(input) ||
@@ -93,6 +93,7 @@ class Course {
     this.thumbnail = thumbnail;
     this.likes = likes;
     this.dislikes = dislikes;
+    this.favourite = false;
     this.score = (likes - dislikes).toString();
 	}
 
@@ -111,9 +112,9 @@ class Course {
         <br><br><br><br>
       </div>
       <div class="course-footer">
-        <img class="rating" src="assets/like_default.png" onclick="like()" onmouseover="this.src='assets/like_filled.png'" onmouseout="this.src='assets/like_default.png'"/>
+        <img class="rating" src="assets/like_default.png" onclick="like('${this.url}')" onmouseover="this.src='assets/like_filled.png'" onmouseout="this.src='assets/like_default.png'"/>
         <t id="rating1" class="rating-value">${this.score}</t>
-        <img class="rating" src="assets/dislike_default.png" onclick="dislike()" onmouseover="this.src='assets/dislike_filled.png'" onmouseout="this.src='assets/dislike_default.png'"/>
+        <img class="rating" src="assets/dislike_default.png" onclick="dislike('${this.url}')" onmouseover="this.src='assets/dislike_filled.png'" onmouseout="this.src='assets/dislike_default.png'"/>
 
         <p></p>
 
@@ -161,6 +162,41 @@ document.addEventListener("DOMContentLoaded", () => {
     courselist.innerHTML += course.generateHTML();
   }
 
-
 });
 
+function togglefavourite(url){
+	console.log(url);
+	for (course of courses) {
+		if (course.url === url){
+			course.favourite = true;
+		}
+	}
+	update();
+}
+
+function like(url){
+	for (course of courses) {
+		if (course.url === url){
+			course.likes += 1;
+			course.score += 1;
+		}
+	}
+	update();
+}
+
+function dislike(url){
+	for (course of courses) {
+		if (course.url === url){
+			course.dislikes += 1;
+			course.score -= 1;
+		}
+	}
+	update();
+}
+
+function update(){
+	let courselist = document.getElementById("recommended-list");
+	for (course of courses) {
+   		courselist.innerHTML += course.generateHTML();
+	}
+}
