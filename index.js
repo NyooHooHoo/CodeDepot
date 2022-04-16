@@ -149,9 +149,5 @@ document.addEventListener("DOMContentLoaded", () => {
   for (course of courses) {
     courselist.innerHTML += course.generateHTML();
   }
-  html.innerHTML += `<footer>
-    <p>Made by The Code Depot Team</p>
-    <a href="https://github.com/nelimalu/CodeDepot" target="_blank"><img id="github-link" src="assets/GitHub-Mark/PNG/GitHub-Mark-Light-32px.png"></a>
-  </footer>`;
 });
 
