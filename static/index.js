@@ -196,6 +196,7 @@ function dislike(url){
 
 function update(){
 	let courselist = document.getElementById("recommended-list");
+  courselist.innerHTML = "";
 	for (course of courses) {
    		courselist.innerHTML += course.generateHTML();
 	}
