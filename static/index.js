@@ -112,15 +112,15 @@ class Course {
         <br><br><br><br>
       </div>
       <div class="course-footer">
-        <img class="rating" src="assets/like_default.png" onclick="like('${this.url}')" onmouseover="this.src='assets/like_filled.png'" onmouseout="this.src='assets/like_default.png'"/>
+        <img class="rating" src="static/assets/images/like_default.png" onclick="like('${this.url}')" onmouseover="this.src='static/assets/images/like_filled.png'" onmouseout="this.src='static/assets/images/like_default.png'"/>
         <t id="rating1" class="rating-value">${this.score}</t>
-        <img class="rating" src="assets/dislike_default.png" onclick="dislike('${this.url}')" onmouseover="this.src='assets/dislike_filled.png'" onmouseout="this.src='assets/dislike_default.png'"/>
+        <img class="rating" src="static/assets/images/dislike_default.png" onclick="dislike('${this.url}')" onmouseover="this.src='static/assets/images/dislike_filled.png'" onmouseout="this.src='static/assets/images/dislike_default.png'"/>
 
         <p></p>
 
         <a class="learn-now" href="${this.url}" target="_blank">LEARN</a>
         <p></p>
-        <img class="favourite" src="{{ url_for('static',filename='assets/images/star_default.png') }}" onclick="togglefavourite()" onmouseover="this.src='assets/star_fill.png'" onmouseout="this.src='assets/star_default.png'" />
+        <img class="favourite" src="static/assets/images/star_default.png" onclick="togglefavourite()" onmouseover="this.src='static/assets/images/star_fill.png'" onmouseout="this.src='static/assets/images/star_default.png'" />
       
       </div>
     </div>

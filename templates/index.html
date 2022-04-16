@@ -21,7 +21,12 @@
 	</head>
 
 	<body onload="document.body.style.opacity='1'">
-		<img src="{{ url_for('static',filename='assets/images/like_default.png') }}", alt="like button" height="1">
+		<img src="{{ url_for('static',filename='assets/images/like_default.png') }}", alt="like button" height="0">
+		<img src="{{ url_for('static',filename='assets/images/dislike_default.png') }}", alt="like button" height="0">
+		<img src="{{ url_for('static',filename='assets/images/like_filled.png') }}", alt="like button" height="0">
+		<img src="{{ url_for('static',filename='assets/images/dislike_filled.png') }}", alt="like button" height="0">
+		<img src="{{ url_for('static',filename='assets/images/star_default.png') }}", alt="like button" height="0">
+		<img src="{{ url_for('static',filename='assets/images/star_fill.png') }}", alt="like button" height="0">
 		
 		<nav class="navbar navbar-expand-lg navbar-dark custom-colour fixed-top">
 		  <div class="container-fluid">
