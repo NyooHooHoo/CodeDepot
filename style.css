@@ -39,7 +39,39 @@ body {
 .course-footer {
 	position: absolute; 
     bottom: 0;
-    padding: 10px;
+    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    vertical-align: middle;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+}
+
+.course-footer-left {
+	display: flex;
+	justify-content: left;
+	align-items: left;
+}
+
+.course-footer-center {
+	vertical-align: middle;
+	text-align: center;
+}
+
+.course-footer-right {
+	display: flex;
+	justify-content: right;
+	align-items: right;
+}
+
+.rating-value {
+	font-size: 150%;
+}
+
+.favourite {
+	max-width: 25%;
+	object-fit: scale-down;
 }
 
 .course-image {
@@ -51,17 +83,34 @@ body {
 }
 
 .course-information {
-	padding: 10px;
-}
-
-.course-footer-right {
-	float: right;
-	vertical-align: middle;
+	padding: 20px;
 }
 
 .rating {
-	width: 10%;
-	height: 10%;
+	max-width: 25%;
+	object-fit: scale-down;
+}
+
+.learn-now {
+	font-size: 100%;
+	color: white;
+	text-decoration: none;
+	vertical-align: middle;
+	padding: 5px;
+	border-radius: 5px;
+	display: block;
+	width: auto;
+	
+	border: 2px solid #ff9900;
+	background-color: #1f3a67ff;
+	transition-duration: .3s;
+}
+
+.learn-now:hover {
+	margin: 0px;
+	
+	color: white;
+	background-color: #ff9900;
 }
 
 .course-title {

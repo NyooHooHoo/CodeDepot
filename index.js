@@ -4,7 +4,7 @@ function search() {
 
 
 class Course {
-	constructor(title, author, ) {
+	constructor(title, author) {
 
 	}
 }
