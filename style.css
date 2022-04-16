@@ -19,9 +19,7 @@ body {
 .courses-list {
 	margin: 5%;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-column-gap: 7%;
-	grid-row-gap: 60%;
+	grid-row-gap: 2%;
 }
 
 .course-item {
@@ -29,7 +27,7 @@ body {
 	border-radius: 10px;
 	background-color: #1f3a67ff;
 	text-align: left;
-	height: 125%;
+	height: 100%;
 	transition-duration: .3s;
 	position: relative; 
 }
@@ -56,6 +54,11 @@ body {
 	padding: 10px;
 }
 
+.course-footer-right {
+	float: right;
+	vertical-align: middle;
+}
+
 .rating {
 	width: 10%;
 	height: 10%;
@@ -67,10 +70,12 @@ body {
 }
 
 #content {
+	height: auto;
 	color: white;
 	margin: 5px;
 	text-align: center;
-	padding-bottom: 2.5rem;
+	padding-bottom: 20%;
+	padding-top: 10%;
 }
 
 .navbar-brand {
@@ -112,13 +117,12 @@ body {
 .main-title {
 	margin: 20px;
 	margin-bottom: 40px;
-	width: 50%;
+	width: 90%;
 	font-size: 400%;
 	flex-direction: column;
 	text-align: center;
 	font-family: D-DIN-Bold;
 }
-
 
 #search {
 	width: 40%;
@@ -220,3 +224,24 @@ footer {
 	text-align: center;
 	height: 2.5rem;  
 }
+
+@media only screen and (min-width: 800px) {
+	.courses-list {
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-column-gap: 7%;
+		grid-row-gap: 10%;
+	}
+  	#content {
+    	padding-top: 0%;
+  	}
+  	.main-title {
+		width: 50%;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	#search {
+    	width: 70%;
+  	}
+}
+
