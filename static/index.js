@@ -119,7 +119,7 @@ class Course {
 
         <a class="learn-now" href="${this.url}" target="_blank">LEARN</a>
         <p></p>
-        <img class="favourite" src="assets/star_default.png" onclick="togglefavourite()" onmouseover="this.src='assets/star_fill.png'" onmouseout="this.src='assets/star_default.png'" />
+        <img class="favourite" src="{{ url_for('static',filename='assets/images/star_default.png') }}" onclick="togglefavourite()" onmouseover="this.src='assets/star_fill.png'" onmouseout="this.src='assets/star_default.png'" />
       
       </div>
     </div>

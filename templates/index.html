@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	<style>
-		@font-face {
-		  font-family: D-DIN;
-		  src: url("{{ url_for('static',filename='fonts/D-DIN.ttf') }}");
-		}
-
-		@font-face {
-		  font-family: D-DIN-Bold;
-		  src: url("{{ url_for('static',filename='fonts/D-DIN-Bold.otf') }}");
-		}
-	</style>
+	
 	<head>
 	    <meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=0.7"/>
@@ -24,10 +14,14 @@
     	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
 	    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
-	    <script src="index.js"></script>
+	    <script src="{{ url_for('static',filename='index.js') }}"></script>
+
+
 
 	</head>
+
 	<body onload="document.body.style.opacity='1'">
+		<img src="{{ url_for('static',filename='assets/images/like_default.png') }}", alt="like button" height="1">
 		
 		<nav class="navbar navbar-expand-lg navbar-dark custom-colour fixed-top">
 		  <div class="container-fluid">
@@ -80,7 +74,7 @@
 	</body>
 	<footer>
 	    <p>Made by The Code Depot Team</p>
-	    <a href="https://github.com/nelimalu/CodeDepot" target="_blank"><img id="github-link" src="assets/GitHub-Mark/PNG/GitHub-Mark-Light-32px.png"></a>
+	    <a href="https://github.com/nelimalu/CodeDepot" target="_blank"><img id="github-link" src="{{ url_for('static',filename='assets/GitHub-Mark/PNG/GitHub-Mark-Light-32px.png') }}"></a>
 	</footer>
 	
 </html>
