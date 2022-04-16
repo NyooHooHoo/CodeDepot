@@ -216,19 +216,24 @@ var courses = [];
 
 function search() {
 	let input = document.getElementById('search').value;
-  	let courselist = document.getElementById("recommended-list");
-	input = input.toLowerCase();
+  let courselist = document.getElementById("recommended-list");
+  let searchResults = document.getElementById("search-results");
+  let resultsCount = 0;
+	let inputLower = input.toLowerCase();
 
   	courselist.innerHTML = "";
 
 	for (course of courses) {
-		if (course.title.toLowerCase().includes(input) ||
-        course.author.toLowerCase().includes(input) ||
-        course.description.toLowerCase().includes(input)) {
+		if (course.title.toLowerCase().includes(inputLower) ||
+        course.author.toLowerCase().includes(inputLower) ||
+        course.description.toLowerCase().includes(inputLower)) {
       courselist.innerHTML += course.generateHTML();
+      resultsCount += 1;
 		}
 	}
 
+  searchResults.innerHTML = ""
+  searchResults.innerHTML += `<h1 class="search-results-title">${resultsCount} results for ${input}</h1>`
    //document.getElementById('search').value = "";
 }
 
