@@ -281,13 +281,6 @@ class Course {
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#search").addEventListener("keyup", event => {
     search();
-    //event.preventDefault();
-    /*if (event.key !== "Enter") {
-      search();
-    } else {
-      search();
-      event.preventDefault();
-    }*/
   });
 
   let courselist = document.getElementById("recommended-list");
