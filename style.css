@@ -214,6 +214,15 @@ h1 {
 	display: inline-block
 }
 
+#about-logo {
+	font-size: 90px;
+	height: 50%;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: D-DIN-Bold;
+}
+
 .profile {
 	border-color: #1f3a67ff;
 	border-style: solid;
@@ -255,6 +264,11 @@ footer {
 	height: auto;  
 	padding: 20px;
 	margin-top: 70px;
+}
+
+#logo {
+	width: 12%;
+	height: 12%;
 }
 
 #github-link {
