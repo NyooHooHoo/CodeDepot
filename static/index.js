@@ -162,7 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
     courselist.innerHTML += course.generateHTML();
   }
 
-
 });
 
 function togglefavourite(url){
