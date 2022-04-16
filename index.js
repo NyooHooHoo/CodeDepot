@@ -62,10 +62,10 @@ let data =
   }
 }
 
-let filteredSearch = {}
+let filteredSearch = {};
 
 function search() {
-
+	filteredSearch = {};
 	let input = document.getElementById('search').value;
 	input = input.toLowerCase();
 
