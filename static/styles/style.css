@@ -1,6 +1,6 @@
 @font-face {
 	font-family: D-DIN;
-	src: url("D-DIN.ttf");
+	src: url("{{ url_for('static', filename='D-DIN.ttf') }}");
 }
 
 @font-face {
@@ -9,10 +9,12 @@
 }
 
 * {
-	font-family: D-DIN;
+	font-family: sans-serif;
 }
 
 body {
+	opacity: 0;
+    transition: opacity 1s;
 	background-color: #315795ff;
 }
 
@@ -141,7 +143,8 @@ body {
 }
 
 .author {
-	font-family: D-DIN-Bold;
+	font-weight: bold;
+	font-family: sans-serif;
 }
 
 .content-wrapper {
@@ -159,7 +162,8 @@ body {
 	font-size: 400%;
 	flex-direction: column;
 	text-align: center;
-	font-family: D-DIN-Bold;
+	font-weight: bold;
+	font-family: sans-serif;
 }
 
 .top-picks-title {
