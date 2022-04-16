@@ -14,8 +14,6 @@
 
 body {
 	background-color: #315795ff;
-    opacity: 0;
-    transition: opacity 1s;
 }
 
 .courses-list {
