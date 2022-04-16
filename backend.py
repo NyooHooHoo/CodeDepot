@@ -31,16 +31,16 @@ def login():
 		username = request.form['usrnm']
 		password = request.form['pswrd']
 		session['user'] = [username, password]
-		return render_template("index.html")
+		return redirect("/")
 	else:
 		if "user" in session:
-			return redirect("index.html")
+			return redirect("/")
 		return render_template("login.html")
 
 @app.route('/logout')
 def logout():
 	session.pop("user", None)
-	return render_template("login.html")
+	return redirect("/login")
 
 
 if __name__ == "__main__":
