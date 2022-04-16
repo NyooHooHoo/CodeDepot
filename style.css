@@ -218,6 +218,7 @@ h1 {
 	font-size: 90px;
 	height: 50%;
 	width: 50%;
+	margin-top: 50px;
 	margin-left: auto;
 	margin-right: auto;
 	font-family: D-DIN-Bold;
@@ -235,7 +236,13 @@ h1 {
 	margin-bottom: 25px;
 	margin-left: auto;
 	margin-right: auto;
+	transition-duration: .3s;
   }
+
+.profile:hover {
+	height: 260px;
+	width: 260px;
+}
 
 .profile-pic {
 	height: 100%;
@@ -247,14 +254,10 @@ h1 {
 	grid-template-columns: 350px 350px 350px 350px;
 }
 
-.name-button {
-	color: white;
-	text-decoration: none;
-	transition-duration: .3s;
-}
-
-.name-button:hover {
-	color: #ff9900ff;
+.bio {
+	margin-left: auto;
+	margin-right: auto;
+	width: 300px;
 }
 
 footer {
