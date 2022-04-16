@@ -84,8 +84,8 @@ function search() {
 
 
 class Course {
-	constructor(title, author) {
-
+	constructor(title, length, author, description, url, thumbnail, likes, dislikes) {
+    
 	}
 }
 

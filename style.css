@@ -267,8 +267,8 @@ footer {
 }
 
 #logo {
-	width: 12%;
-	height: 12%;
+	max-height: 20%;
+	object-fit: scale-down;
 }
 
 #github-link {
@@ -280,6 +280,9 @@ footer {
 	opacity: 1;
 }
 
+.navbar-brand {
+	flex-grow: 0;
+}
 
 @media only screen and (min-width: 1000px) {
 	.courses-list {
