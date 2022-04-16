@@ -6,7 +6,7 @@ let data =
       "author": "Programming With Mosh",
       "description": "Java tutorial for beginners - Learn Java, the langauge behind millions of apps and websites",
       "url": "https://www.youtube.com/watch?v=eIrMbAQSU34",
-      "thumbnail": "leave this empty",
+      "thumbnail": "thumbnail1.jpg",
       "likes": 0,
       "dislikes": 0,
     },
@@ -62,25 +62,24 @@ let data =
   }
 }
 
-let filteredSearch = {};
 var courses = [];
 
 function search() {
-
 	let input = document.getElementById('search').value;
+  let courselist = document.getElementById("recommended-list");
 	input = input.toLowerCase();
 
-	for (key in data) {
-		let obj = data[key];
-		if (obj.title.toLowerCase().includes(input) || obj.author.toLowerCase().includes(input)) {
-			filteredSearch[key] = obj;
-			console.log(obj.title);
+  courselist.innerHTML = "";
+
+	for (course of courses) {
+		if (course.title.toLowerCase().includes(input) ||
+        course.author.toLowerCase().includes(input) ||
+        course.description.toLowerCase().includes(input)) {
+      courselist.innerHTML += course.generateHTML();
 		}
 	}
 
-	for (key in filteredSearch){
-		console.log(filteredSearch[key]);
-	}
+   //document.getElementById('search').value = "";
 }
 
 
@@ -129,6 +128,17 @@ class Course {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector("#search").addEventListener("keyup", event => {
+    search();
+    //event.preventDefault();
+    /*if (event.key !== "Enter") {
+      search();
+    } else {
+      search();
+      event.preventDefault();
+    }*/
+  });
+
   let courselist = document.getElementById("recommended-list");
   let html = document.getElementById("html");
 
@@ -145,9 +155,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let course = new Course(title, length, author, description, url, thumbnail, likes, dislikes);
     courses.push(course);
   }
+  courses.sort(() => Math.random() - 0.5);
 
   for (course of courses) {
     courselist.innerHTML += course.generateHTML();
   }
+
+
 });
 
