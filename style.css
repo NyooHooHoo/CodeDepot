@@ -52,6 +52,7 @@ body {
 	display: flex;
 	justify-content: left;
 	align-items: left;
+	vertical-align: middle;
 }
 
 .course-footer-center {
