@@ -21,11 +21,12 @@ body {
 }
 
 .courses-list {
+	height: 200%;
 	margin: 5%;
-	margin-bottom: 15%;
+	margin-bottom: 0%;
 	display: grid;
 	grid-row-gap: 2%;
-	grid-auto-rows: 50%;
+	grid-auto-rows: 1fr;
 }
 
 .course-item {
