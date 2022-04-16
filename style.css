@@ -161,6 +161,18 @@ body {
 	font-family: D-DIN-Bold;
 }
 
+.top-picks-title {
+	margin-left: auto;
+	margin-right: auto;
+	font-family: D-DIN-Bold;
+	font-size: 300%;
+}
+
+#top-10 {
+	color: #ff9900;
+	font-family: D-DIN-Bold;
+}
+
 #search {
 	width: 40%;
 	padding: 10px;
