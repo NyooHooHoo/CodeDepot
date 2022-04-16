@@ -1,11 +1,11 @@
 @font-face {
-  font-family: D-DIN;
-  src: url("assets/D-DIN.ttf");
+	font-family: D-DIN;
+	src: url("D-DIN.ttf");
 }
 
 @font-face {
-  font-family: D-DIN-Bold;
-  src: url("assets/D-DIN-Bold.otf");
+	font-family: D-DIN-Bold;
+	src: url("D-DIN-Bold.otf");
 }
 
 * {
@@ -14,10 +14,6 @@
 
 body {
 	background-color: #315795ff;
-}
-
-.filler {
-	
 }
 
 .courses-list {
