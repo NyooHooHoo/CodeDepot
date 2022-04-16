@@ -217,6 +217,18 @@ h1 {
 
 footer {
 	background: #1f3a67ff;
+	color: grey;
 	text-align: center;
-	height: 2.5rem;  
+	height: auto;  
+	padding: 20px;
+	margin-top: 70px;
+}
+
+#github-link {
+	opacity: 0.5;
+	transition-duration: .3s;
+}
+
+#github-link:hover {
+	opacity: 1;
 }
