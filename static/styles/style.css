@@ -251,6 +251,11 @@ body {
 	background-color: white;
 }
 
+.active-log-in-button {
+	color: #1f3a67ff;
+	background-color: white;
+}
+
 .sign-up-button {
 	font-size: 100%;
 	color: orange;
@@ -268,6 +273,11 @@ body {
 }
 
 .sign-up-button:hover {
+	color: #1f3a67ff;
+	background-color: orange;
+}
+
+.active-sign-up-button {
 	color: #1f3a67ff;
 	background-color: orange;
 }
