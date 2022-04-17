@@ -213,15 +213,16 @@ let data = {
 }
 
 var courses = [];
+var firstload = true;
 
 function search() {
   let input = document.getElementById('search').value;
-  let courselist = document.getElementById("recommended-list");
+  let courselist = document.querySelector(".courses-list");
   let searchResults = document.getElementById("search-results");
   let resultsCount = 0;
   let inputLower = input.toLowerCase();
 
-    courselist.innerHTML = "";
+  courselist.innerHTML = "";
 
   for (course of courses) {
     if (course.title.toLowerCase().includes(inputLower) ||
@@ -292,34 +293,109 @@ class Course {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#search").addEventListener("keyup", event => {
-    search();
-  });
+function send(courses) {
+  let name = document.getElementById("welcome");
+  if (name !== null) {
+    let send_data = {0: name.innerHTML.split(" ")[1]}
+    for (let i = 1; i <= courses.length; i++) {
+      send_data[i] = courses[i];
+    }
+    let final_data = JSON.stringify({"courses": send_data});
 
-  let courselist = document.getElementById("recommended-list");
-  let html = document.getElementById("html");
-
-  for (key in data) {
-    let title = data[key].title;
-    let length = data[key].length;
-    let author = data[key].author;
-    let description = data[key].description;
-    let url = data[key].url;
-    let thumbnail = data[key].thumbnail;
-    let likes = data[key].likes;
-    let dislikes = data[key].dislikes;
-
-    let course = new Course(title, length, author, description, url, thumbnail, likes, dislikes);
-    courses.push(course);
+    $.post( "/postmethod", {
+        data: JSON.stringify(send_data) 
+    });
   }
-  courses.sort(() => Math.random() - 0.5);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  let mainpage = true;
+  try {
+    document.querySelector("#search").addEventListener("keyup", event => {
+      search();
+    });
+  } catch (e) {
+    mainpage = false;
+  }
+
+
+  if (firstload) {
+    firstload = false;
+    
+
+    for (key in data) {
+      let title = data[key].title;
+      let length = data[key].length;
+      let author = data[key].author;
+      let description = data[key].description;
+      let url = data[key].url;
+      let thumbnail = data[key].thumbnail;
+      let likes = data[key].likes;
+      let dislikes = data[key].dislikes;
+
+      let course = new Course(title, length, author, description, url, thumbnail, likes, dislikes);
+      courses.push(course);
+    }
+    courses.sort(() => Math.random() - 0.5);
+  }
+
+  $.get("/getscoresdata", function(data) {
+    let recieved = $.parseJSON(data)
+
+    for (course of courses) {
+      Object.entries(recieved).forEach(([key, value]) => {
+        if (course.url == key) {
+          course.score = value;
+        }
+      })
+    }      
+  })
+
+  let courselist = document.querySelector(".courses-list");
 
   for (course of courses) {
-    courselist.innerHTML += course.generateHTML();
+    if (!mainpage) {
+      console.log(course.favourite);
+      courselist.innerHTML += course.generateHTML();
+    }
+    else if (mainpage)
+      courselist.innerHTML += course.generateHTML();
   }
 
+  $.get("/getusersdata", function(data) {
+    let recieved = $.parseJSON(data);
+
+    let raw_name = document.getElementById("welcome");
+    if (raw_name !== null) {
+      name = raw_name.innerHTML.split(" ")[1]
+    
+      Object.entries(recieved).forEach(([_key, _value]) => {  // THIS IS WHAT IS SLOW
+        if (_key == name) {
+          Object.entries(_value).forEach(([key, value]) => {
+            for (course of courses) {
+              if (course.url == value.url) {
+                course.liked = value.liked;
+                course.disliked = value.disliked;
+                course.favourite = value.favourite;
+                update();
+                break;
+              }
+            }
+          });
+
+        }
+      })
+    }
+  });
+
+  
+
+  
+
+  
+  
 });
+
 
 function togglefavourite(url) {
 
@@ -336,6 +412,7 @@ function togglefavourite(url) {
       }
     }
   }
+  send(courses);
 }
 
 function enterFavourite(url) {
@@ -384,6 +461,7 @@ function like(url) {
 
     }
   }
+  send(courses);
 }
 
 function enterLike(url) {
@@ -431,6 +509,7 @@ function dislike(url){
 
     }
   }
+  send(courses);
 }
 
 function enterDislike(url) {
@@ -461,7 +540,7 @@ function getDisliked(course) {
 }
 
 function update() {
-  let courselist = document.getElementById("recommended-list");
+  let courselist = document.querySelector(".courses-list");
   courselist.innerHTML = "";
   for (course of courses) {
     courselist.innerHTML += course.generateHTML();

@@ -12,12 +12,40 @@
 	    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 	    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
 	    <script src="{{ url_for('static',filename='index.js') }}"></script>
 
 	</head>
 	<body onload="document.body.style.opacity='1'">
+		<img src="{{ url_for('static',filename='assets/images/like_default.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/images/dislike_default.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/images/like_filled.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/images/dislike_filled.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/images/star_default.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/images/search_image.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail1.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail2.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail3.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail4.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail5.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail6.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail7.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail8.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail9.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail10.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail11.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail12.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail13.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail14.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail15.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail16.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail17.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail18.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail19.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail20.png') }}", alt="" height="0">
+		<img src="{{ url_for('static',filename='assets/thumbnails/thumbnail21.png') }}", alt="" height="0">
 		
 		<nav class="navbar navbar-expand-lg navbar-dark custom-colour fixed-top">
 		  <div class="container-fluid">
@@ -52,7 +80,7 @@
 		<div id="content">
 			<h1 id="favourites-title">Your Favourite Courses</h1>
 			<p>Click on the star at the bottom of any course to add it to your favourites list!</p>	
-			<div id="favourites-list" class="courses-list">
+			<div class="courses-list">
 
 			</div>
 		</div>

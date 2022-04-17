@@ -43,20 +43,22 @@
 		        </li>
 		      </ul>
 			  <a class="log-in-button" href='{{ url_for("login") }}'>Log In</a>
-			  <a class="sign-up-button active-sign-up-button" href='{{ url_for("signup") }}'>Sign Up</a>
+			  <a class="sign-up-button active-sign-up-button disabled" href='{{ url_for("signup") }}'>Sign Up</a>
 		    </div>
 		  </div>
 		</nav>
 		<div id="login-content">
-			<img class = "avatar" src="assets/avatar.png">
 			<h1 class = loginHeader>Sign Up</h1>
 
 			<form action="#" method="post">
 				<p class="smallHeader">Username</p>
-				<input class="input" type="username" name="usrnm" placeholder="Enter Username">
+				<input class="input" type="username" name="usrname" placeholder="Enter Username">
 				<p class="smallHeader">Password</p>
-				<input class="input" type="password" name="pswrd" placeholder="Enter Password">
+				<input class="input" type="password" name="psword" placeholder="Enter Password">
 				<button class="signupButton" type="submit">Sign Up</button>
+				{% if userfound %}
+				<t class="wrong">That user already exists!</t>
+				{% endif %}
 			</form>
 		</div>
 

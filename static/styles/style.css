@@ -8,6 +8,16 @@ body {
 	background-color: #315795;
 }
 
+.welcome {
+	margin-right: 10px;
+	color: white;
+}
+
+.wrong {
+	color: red;
+	padding-top: 20px;
+}
+
 .courses-list {
 	height: 100%;
 	margin: 5%;
