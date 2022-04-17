@@ -11,7 +11,7 @@ let data = {
     },
     2: {
       "title": "Crash Course on Java",
-      "length": "13:59",
+      "length": "00:13:59",
       "author": "Alex Lee",
       "description": "Learn Java in 14 Minutes (seriously)",
       "url": "https://www.youtube.com/watch?v=RRubcjpTkks",
@@ -31,7 +31,7 @@ let data = {
     },
     4: {
       "title": "C++ Crash Course",
-      "length": "26:29",
+      "length": "00:26:29",
       "author": "Simplilearn",
       "description": "C++ Basics For Beginners | Learn C++ Programming | C++ Tutorial For Beginners | Simplilearn",
       "url": "https://www.youtube.com/watch?v=McojvctVsUs",
@@ -91,7 +91,7 @@ let data = {
     },
     10: {
       "title": "15 Minute SQL Rundown",
-      "length": "17:39",
+      "length": "00:17:39",
       "author": "LearnBI.online",
       "description": "Learn Basic SQL in 15 Minutes | Business Intelligence For Beginners | SQL Tutorial For Beginners",
       "url": "https://www.youtube.com/watch?v=kbKty5ZVKMY",
@@ -161,7 +161,7 @@ let data = {
     },
     17: {
       "title": "JavaScript in 5 Minutes",
-      "length": "5:14",
+      "length": "00:05:14",
       "author": "Aaron Jack",
       "description": "Learn the most important parts of 2020 Javascript in just 5 minutes",
       "url": "https://www.youtube.com/watch?v=c-I5S_zTwAc",
@@ -181,7 +181,7 @@ let data = {
     },
     19: {
       "title": "What is an API?",
-      "length": "7:12",
+      "length": "00:07:12",
       "author": "CodeWithChris",
       "description": "Discover what is an API and how you can use one to perform powerful integrations with other systems.",
       "url": "https://www.youtube.com/watch?v=Yzx7ihtCGBs",
@@ -264,18 +264,32 @@ class Course {
 	}
 
   generateHTML() {
-    return `
-    <div class="course-item">
-      <img class="course-image" src="static/assets/thumbnails/${this.thumbnail}" alt="Thumbnail">
-      <div class="course-information">
-        <t class="course-title">${this.title}</t>
-        
-        <br>
-        Length: ${this.length}<br>
-        By:
-        <t class="author">${this.author}</t><br><br>
-        <t>${this.description}</t>
-        <br><br><br><br>
+      return `
+      <div class="course-item">
+        <a href="${this.url}" target="_blank">         
+        <img class="course-image" src="static/assets/thumbnails/${this.thumbnail}" alt="Thumbnail">
+        </a>
+        <div class="course-information">
+          <t class="course-title">${this.title}</t>
+          
+          <br>
+          Length: ${this.length}<br>
+          By:
+          <t class="author">${this.author}</t><br><br>
+          <t>${this.description}</t>
+          <br><br><br><br>
+        </div>
+        <div class="course-footer">
+          <img class="rating" src="static/assets/images/like_default.png" onclick="like('${this.url}')" onmouseover="this.src='static/assets/images/like_filled.png'" onmouseout="this.src='static/assets/images/like_default.png'"/>
+          <t id="rating1" class="rating-value">${this.score}</t>
+          <img class="rating" src="static/assets/images/dislike_default.png" onclick="dislike('${this.url}')" onmouseover="this.src='static/assets/images/dislike_filled.png'" onmouseout="this.src='static/assets/images/dislike_default.png'"/>
+
+          <p></p>
+
+          <a class="learn-now" href="${this.url}" target="_blank">LEARN</a>
+          <p></p>
+          <img class="favourite" src="static/assets/images/star_default.png" onclick="togglefavourite('${this.url}')" onmouseover="this.src='static/assets/images/star_fill.png'" onmouseout="this.src='static/assets/images/star_default.png'" />
+        </div>
       </div>
       <div class="course-footer">
         <img id="${this.like_id}" class="rating" src="static/assets/images/like_default.png" onclick="like('${this.url}')" onmouseover="enterLike('${this.url}')" onmouseout="leaveLike('${this.url}')"/>
@@ -295,12 +309,18 @@ class Course {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#search").addEventListener("keyup", event => {
-    search();
-  });
+  try{
+    document.querySelector("#search").addEventListener("keyup", event => {
+      search();
+    });
+  }
+  catch(e){
+
+  }
 
   let courselist = document.getElementById("recommended-list");
-  let html = document.getElementById("html");
+  let html = document.getElementById("html")
+  let favouritelist = document.getElementById("favourites-list");
 
   for (key in data) {
     let title = data[key].title;
@@ -318,14 +338,23 @@ document.addEventListener("DOMContentLoaded", () => {
   courses.sort(() => Math.random() - 0.5);
 
   for (course of courses) {
-    courselist.innerHTML += course.generateHTML();
+    try{
+      courselist.innerHTML += course.generateHTML();
+    }
+    catch(e){
+    }
+  }
+
+  console.log(favouriteCourse.length);
+  for(course of courses){
+    if(course.favourite === true){
+      favouritelist.innerHTML += course.generateHTML();   
+    }
   }
 
 });
 
-function togglefavourite(url) {
-
-  console.log(url);
+function togglefavourite(url){
   for (course of courses) {
     if (course.url === url){
       if(course.favourite === true){
