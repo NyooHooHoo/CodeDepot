@@ -414,10 +414,10 @@ form {
 	margin: auto;
 }
 
-.submitButton {
+.loginButton {
     background-color: #ff9900;
     color: white;
-    padding: 14px 40px;
+    padding: 10px 40px;
     margin: auto;
 	margin-top: 40px;
     border: 40px;
@@ -429,7 +429,27 @@ form {
 	display: block;
 }
 
-.submitButton:hover {
+.loginButton:hover {
+    color:white; 
+    background-color: #CC5500;
+}
+
+.signupButton {
+    background-color: #ff9900;
+    color: white;
+    padding: 10px 10px;
+    margin: auto;
+	margin-top: 40px;
+    border: 40px;
+    cursor: pointer;
+    width: 120px;
+    opacity: 0.9;
+    transition-duration:.5s;
+    border-radius: 7px;
+	display: block;
+}
+
+.signupButton:hover {
     color:white; 
     background-color: #CC5500;
 }
@@ -456,4 +476,8 @@ form {
     color:whitesmoke;
 	width: 500px;
 	margin: auto;
+}
+
+#login-footer {
+	margin-top: 8%;
 }

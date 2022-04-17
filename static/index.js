@@ -228,6 +228,9 @@ function search() {
         course.author.toLowerCase().includes(inputLower) ||
         course.description.toLowerCase().includes(inputLower)) {
       courselist.innerHTML += course.generateHTML();
+      getFavourited(course);
+      getLiked(course);
+      getDisliked(course);
       resultsCount += 1;
 		}
 	}
@@ -251,10 +254,13 @@ class Course {
     this.likes = likes;
     this.dislikes = dislikes;
     this.favourite = false;
-    this.score = (likes - dislikes).toString();
+    this.liked = false;
+    this.disliked = false;
+    this.score = (likes - dislikes)
     this.like_id = "like" + thumbnail.split(".")[0];
     this.dislike_id = "dislike" + thumbnail.split(".")[0];
     this.favourite_id = "favourite" + thumbnail.split(".")[0];
+    this.score_id = "score" + thumbnail.split(".")[0];
 	}
 
   generateHTML() {
@@ -272,15 +278,15 @@ class Course {
         <br><br><br><br>
       </div>
       <div class="course-footer">
-        <img id="${this.like_id}" class="rating" src="static/assets/images/like_default.png" onclick="like('${this.url}')" onmouseover="this.src='static/assets/images/like_filled.png'" onmouseout="this.src='static/assets/images/like_default.png'"/>
-        <t id="rating1" class="rating-value">${this.score}</t>
-        <img id="${this.dislike_id}"class="rating" src="static/assets/images/dislike_default.png" onclick="dislike('${this.url}')" onmouseover="this.src='static/assets/images/dislike_filled.png'" onmouseout="this.src='static/assets/images/dislike_default.png'"/>
+        <img id="${this.like_id}" class="rating" src="static/assets/images/like_default.png" onclick="like('${this.url}')" onmouseover="enterLike('${this.url}')" onmouseout="leaveLike('${this.url}')"/>
+        <t id="${this.score_id}" class="rating-value">${this.score}</t>
+        <img id="${this.dislike_id}"class="rating" src="static/assets/images/dislike_default.png" onclick="dislike('${this.url}')" onmouseover="enterDislike('${this.url}')" onmouseout="leaveDislike('${this.url}')"/>
 
         <p></p>
 
         <a class="learn-now" href="${this.url}" target="_blank">LEARN</a>
         <p></p>
-        <img id="${this.favourite_id}" class="favourite" src="static/assets/images/star_default.png" onclick="togglefavourite()" onmouseover="this.src='static/assets/images/star_fill.png'" onmouseout="this.src='static/assets/images/star_default.png'" />
+        <img id="${this.favourite_id}" class="favourite" src="static/assets/images/star_default.png" onclick="togglefavourite('${this.url}')" onmouseover="enterFavourite('${this.url}')" onmouseout="leaveFavourite('${this.url}')" />
       
       </div>
     </div>
@@ -317,39 +323,152 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-function togglefavourite(url){
-	for (course of courses) {
-		if (course.url === url){
-			course.favourite = true;
-		}
-	}
-	update();
+function togglefavourite(url) {
+
+  console.log(url);
+  for (course of courses) {
+    if (course.url === url){
+      if(course.favourite === true){
+        course.favourite = false;
+        document.getElementById(course.favourite_id).src = "static/assets/images/star_default.png";
+      }
+      else {
+        course.favourite = true;
+        document.getElementById(course.favourite_id).src = "static/assets/images/star_fill.png";
+      }
+    }
+  }
 }
 
-function like(url){
+function enterFavourite(url) {
+  for (course of courses) {
+    if (course.url === url) {
+      document.getElementById(course.favourite_id).src = "static/assets/images/star_fill.png";
+      break;
+    }
+  }
+}
+
+function leaveFavourite(url) {
+  for (course of courses) {
+    if (course.url === url) {
+      if (!course.favourite) {
+        document.getElementById(course.favourite_id).src = "static/assets/images/star_default.png";
+        break;
+      }
+    }
+  }
+}
+
+function getFavourited(course) {
+    if (course.favourite)
+      document.getElementById(course.favourite_id).src = "static/assets/images/star_fill.png";
+    else
+      document.getElementById(course.favourite_id).src = "static/assets/images/star_default.png";
+}
+
+function like(url) {
 	for (course of courses) {
-		if (course.url === url){
-			course.likes += 1;
-			course.score += 1;
+		if (course.url === url) {
+      if (course.liked) {
+        document.getElementById(course.like_id).src = "static/assets/images/like_default.png";
+  			course.likes -= 1;
+  			course.score -= 1;
+      }
+      else if (!course.liked) {
+
+        document.getElementById(course.like_id).src = "static/assets/images/like_filled.png";
+        course.likes += 1;
+        course.score += 1;
+      }
+      document.getElementById(course.score_id).innerHTML = course.score;
+      course.liked = !course.liked;
+
 		}
 	}
-	update();
+}
+
+function enterLike(url) {
+  for (course of courses) {
+    if (course.url === url) {
+      document.getElementById(course.like_id).src = "static/assets/images/like_filled.png";
+      break;
+    }
+  }
+}
+
+function leaveLike(url) {
+  for (course of courses) {
+    if (course.url === url) {
+      if (!course.liked) {
+        document.getElementById(course.like_id).src = "static/assets/images/like_default.png";
+        break;
+      }
+    }
+  }
+}
+
+function getLiked(course) {
+    if (course.liked)
+      document.getElementById(course.like_id).src = "static/assets/images/like_filled.png";
+    else
+      document.getElementById(course.like_id).src = "static/assets/images/like_default.png";
 }
 
 function dislike(url){
 	for (course of courses) {
-		if (course.url === url){
-			course.dislikes += 1;
-			course.score -= 1;
-		}
-	}
-	update();
+    if (course.url === url) {
+      if (course.disliked) {
+        document.getElementById(course.dislike_id).src = "static/assets/images/dislike_default.png";
+        course.dislikes += 1;
+        course.score += 1;
+      }
+      else if (!course.disliked) {
+        document.getElementById(course.dislike_id).src = "static/assets/images/dislike_filled.png";
+        course.likes -= 1;
+        course.score -= 1;
+      }
+      document.getElementById(course.score_id).innerHTML = course.score;
+      course.disliked = !course.disliked;
+
+    }
+  }
 }
 
-function update(){
+function enterDislike(url) {
+  for (course of courses) {
+    if (course.url === url) {
+      document.getElementById(course.dislike_id).src = "static/assets/images/dislike_filled.png";
+      break;
+    }
+  }
+}
+
+function leaveDislike(url) {
+  for (course of courses) {
+    if (course.url === url) {
+      if (!course.disliked) {
+        document.getElementById(course.dislike_id).src = "static/assets/images/dislike_default.png";
+        break;
+      }
+    }
+  }
+}
+
+function getDisliked(course) {
+    if (course.disliked)
+      document.getElementById(course.dislike_id).src = "static/assets/images/dislike_filled.png";
+    else
+      document.getElementById(course.dislike_id).src = "static/assets/images/dislike_default.png";
+}
+
+function update() {
 	let courselist = document.getElementById("recommended-list");
   courselist.innerHTML = "";
 	for (course of courses) {
-   		courselist.innerHTML += course.generateHTML();
+   	courselist.innerHTML += course.generateHTML();
+    getFavourited(course);
+    getLiked(course);
+    getDisliked(course);
 	}
 }
