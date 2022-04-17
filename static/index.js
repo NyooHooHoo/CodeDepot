@@ -232,7 +232,7 @@ function search() {
 		}
 	}
 
-  searchResults.innerHTML = ""
+  
   searchResults.innerHTML += `<h1 class="search-results-title">${resultsCount} results for ${input}</h1>`
    //document.getElementById('search').value = "";
 }
@@ -285,7 +285,12 @@ class Course {
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#search").addEventListener("keyup", event => {
-    search();
+    let input = document.getElementById('search').value;
+    let searchResults = document.getElementById("search-results");
+    searchResults.innerHTML = ""
+    console.log(input);
+    if (input.length > 0)
+      search();
   });
 
   let courselist = document.getElementById("recommended-list");
