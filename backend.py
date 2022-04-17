@@ -38,9 +38,15 @@ def get_scores_data():
 			for key, value in user[0].items():
 				try:
 					if value['url'] in scores:
-						scores[value["url"]] += value["score"]
+						if value['liked']:
+							scores[value["url"]] += 1
+						if value['disliked']:
+							scores[value["url"]] -= 1
 					else:
-						scores[value["url"]] = value["score"]
+						if value['liked']:
+							scores[value["url"]] = 1
+						if value['disliked']:
+							scores[value["url"]] = -1
 				except:
 					pass
 

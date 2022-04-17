@@ -364,7 +364,6 @@ document.addEventListener("DOMContentLoaded", () => {
         Object.entries(recieved).forEach(([key, value]) => {
           if (course.url == key) {
             course.score = value;
-            console.log(course.score)
           }
         })
       }
@@ -372,7 +371,6 @@ document.addEventListener("DOMContentLoaded", () => {
       let courselist = document.querySelector(".courses-list");
 
       for (course of courses) {
-        console.log(course.score)
         if (!mainpage) {
 
           if (course.favourite === true) {
@@ -384,9 +382,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       if (!mainpage)
         update_favourite();
+      else
+        update();
     })
-    
-    console.log(courses);
+  
 
     
   });
@@ -401,7 +400,6 @@ function g(path) {
 
 function togglefavourite(url) {
 
-  console.log(url);
   for (course of courses) {
     if (course.url === url){
       if(course.favourite === true){
@@ -449,13 +447,11 @@ function like(url) {
     if (course.url === url) {
       if (course.liked) {
         document.getElementById(course.like_id).src = g("static/assets/images/like_default.png");
-        course.likes -= 1;
         course.score -= 1;
       }
       else if (!course.liked) {
 
         document.getElementById(course.like_id).src = g("static/assets/images/like_filled.png");
-        course.likes += 1;
         course.score += 1;
       }
       document.getElementById(course.score_id).innerHTML = course.score;
@@ -498,12 +494,10 @@ function dislike(url){
     if (course.url === url) {
       if (course.disliked) {
         document.getElementById(course.dislike_id).src = g("static/assets/images/dislike_default.png");
-        course.dislikes += 1;
         course.score += 1;
       }
       else if (!course.disliked) {
         document.getElementById(course.dislike_id).src = g("static/assets/images/dislike_filled.png");
-        course.likes -= 1;
         course.score -= 1;
       }
       document.getElementById(course.score_id).innerHTML = course.score;
