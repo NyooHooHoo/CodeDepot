@@ -326,16 +326,20 @@ document.addEventListener("DOMContentLoaded", () => {
   courses.sort(() => Math.random() - 0.5);
 
   for (course of courses) {
-    try{    
+    try{
       courselist.innerHTML += course.generateHTML();
     }
     catch(e){
-      if(course.favourite === true){
-        favouritelist.innerHTML += course.generateHTML();
-      }
     }
-
   }
+
+  console.log(favouriteCourse.length);
+  for(course of courses){
+    if(course.favourite === true){
+      favouritelist.innerHTML += course.generateHTML();   
+    }
+  }
+
 });
 
 function togglefavourite(url){
@@ -354,6 +358,7 @@ function togglefavourite(url){
       else{
         course.favourite = true;
         favouriteCourse.push(course);
+        console.log(favouriteCourse.length);
         console.log(course.title + " Added");
       }
     }
