@@ -252,6 +252,9 @@ class Course {
     this.dislikes = dislikes;
     this.favourite = false;
     this.score = (likes - dislikes).toString();
+    this.like_id = "like" + thumbnail.split(".")[0];
+    this.dislike_id = "dislike" + thumbnail.split(".")[0];
+    this.favourite_id = "favourite" + thumbnail.split(".")[0];
 	}
 
   generateHTML() {
@@ -269,15 +272,15 @@ class Course {
         <br><br><br><br>
       </div>
       <div class="course-footer">
-        <img class="rating" src="static/assets/images/like_default.png" onclick="like('${this.url}')" onmouseover="this.src='static/assets/images/like_filled.png'" onmouseout="this.src='static/assets/images/like_default.png'"/>
+        <img id="${this.like_id}" class="rating" src="static/assets/images/like_default.png" onclick="like('${this.url}')" onmouseover="this.src='static/assets/images/like_filled.png'" onmouseout="this.src='static/assets/images/like_default.png'"/>
         <t id="rating1" class="rating-value">${this.score}</t>
-        <img class="rating" src="static/assets/images/dislike_default.png" onclick="dislike('${this.url}')" onmouseover="this.src='static/assets/images/dislike_filled.png'" onmouseout="this.src='static/assets/images/dislike_default.png'"/>
+        <img id="${this.dislike_id}"class="rating" src="static/assets/images/dislike_default.png" onclick="dislike('${this.url}')" onmouseover="this.src='static/assets/images/dislike_filled.png'" onmouseout="this.src='static/assets/images/dislike_default.png'"/>
 
         <p></p>
 
         <a class="learn-now" href="${this.url}" target="_blank">LEARN</a>
         <p></p>
-        <img class="favourite" src="static/assets/images/star_default.png" onclick="togglefavourite()" onmouseover="this.src='static/assets/images/star_fill.png'" onmouseout="this.src='static/assets/images/star_default.png'" />
+        <img id="${this.favourite_id}" class="favourite" src="static/assets/images/star_default.png" onclick="togglefavourite()" onmouseover="this.src='static/assets/images/star_fill.png'" onmouseout="this.src='static/assets/images/star_default.png'" />
       
       </div>
     </div>
