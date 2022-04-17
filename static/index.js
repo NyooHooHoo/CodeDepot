@@ -11,7 +11,7 @@ let data = {
     },
     2: {
       "title": "Crash Course on Java",
-      "length": "00:13:59",
+      "length": "13:59",
       "author": "Alex Lee",
       "description": "Learn Java in 14 Minutes (seriously)",
       "url": "https://www.youtube.com/watch?v=RRubcjpTkks",
@@ -31,7 +31,7 @@ let data = {
     },
     4: {
       "title": "C++ Crash Course",
-      "length": "00:26:29",
+      "length": "26:29",
       "author": "Simplilearn",
       "description": "C++ Basics For Beginners | Learn C++ Programming | C++ Tutorial For Beginners | Simplilearn",
       "url": "https://www.youtube.com/watch?v=McojvctVsUs",
@@ -91,7 +91,7 @@ let data = {
     },
     10: {
       "title": "15 Minute SQL Rundown",
-      "length": "00:17:39",
+      "length": "17:39",
       "author": "LearnBI.online",
       "description": "Learn Basic SQL in 15 Minutes | Business Intelligence For Beginners | SQL Tutorial For Beginners",
       "url": "https://www.youtube.com/watch?v=kbKty5ZVKMY",
@@ -161,7 +161,7 @@ let data = {
     },
     17: {
       "title": "JavaScript in 5 Minutes",
-      "length": "00:05:14",
+      "length": "5:14",
       "author": "Aaron Jack",
       "description": "Learn the most important parts of 2020 Javascript in just 5 minutes",
       "url": "https://www.youtube.com/watch?v=c-I5S_zTwAc",
@@ -181,7 +181,7 @@ let data = {
     },
     19: {
       "title": "What is an API?",
-      "length": "00:07:12",
+      "length": "7:12",
       "author": "CodeWithChris",
       "description": "Discover what is an API and how you can use one to perform powerful integrations with other systems.",
       "url": "https://www.youtube.com/watch?v=Yzx7ihtCGBs",
@@ -215,16 +215,16 @@ let data = {
 var courses = [];
 
 function search() {
-	let input = document.getElementById('search').value;
+  let input = document.getElementById('search').value;
   let courselist = document.getElementById("recommended-list");
   let searchResults = document.getElementById("search-results");
   let resultsCount = 0;
-	let inputLower = input.toLowerCase();
+  let inputLower = input.toLowerCase();
 
-  	courselist.innerHTML = "";
+    courselist.innerHTML = "";
 
-	for (course of courses) {
-		if (course.title.toLowerCase().includes(inputLower) ||
+  for (course of courses) {
+    if (course.title.toLowerCase().includes(inputLower) ||
         course.author.toLowerCase().includes(inputLower) ||
         course.description.toLowerCase().includes(inputLower)) {
       courselist.innerHTML += course.generateHTML();
@@ -232,8 +232,8 @@ function search() {
       getLiked(course);
       getDisliked(course);
       resultsCount += 1;
-		}
-	}
+    }
+  }
 
   searchResults.innerHTML = ""
   if (input.length > 0) {
@@ -244,7 +244,7 @@ function search() {
 
 
 class Course {
-	constructor(title, length, author, description, url, thumbnail, likes, dislikes) {
+  constructor(title, length, author, description, url, thumbnail, likes, dislikes) {
     this.title = title;
     this.length = length;
     this.author = author;
@@ -261,43 +261,27 @@ class Course {
     this.dislike_id = "dislike" + thumbnail.split(".")[0];
     this.favourite_id = "favourite" + thumbnail.split(".")[0];
     this.score_id = "score" + thumbnail.split(".")[0];
-	}
+  }
 
   generateHTML() {
-      return `
-      <div class="course-item">
-        <a href="${this.url}" target="_blank">         
-        <img class="course-image" src="static/assets/thumbnails/${this.thumbnail}" alt="Thumbnail">
-        </a>
-        <div class="course-information">
-          <t class="course-title">${this.title}</t>
-          
-          <br>
-          Length: ${this.length}<br>
-          By:
-          <t class="author">${this.author}</t><br><br>
-          <t>${this.description}</t>
-          <br><br><br><br>
-        </div>
-        <div class="course-footer">
-          <img class="rating" src="static/assets/images/like_default.png" onclick="like('${this.url}')" onmouseover="this.src='static/assets/images/like_filled.png'" onmouseout="this.src='static/assets/images/like_default.png'"/>
-          <t id="rating1" class="rating-value">${this.score}</t>
-          <img class="rating" src="static/assets/images/dislike_default.png" onclick="dislike('${this.url}')" onmouseover="this.src='static/assets/images/dislike_filled.png'" onmouseout="this.src='static/assets/images/dislike_default.png'"/>
-
-          <p></p>
-
-          <a class="learn-now" href="${this.url}" target="_blank">LEARN</a>
-          <p></p>
-          <img class="favourite" src="static/assets/images/star_default.png" onclick="togglefavourite('${this.url}')" onmouseover="this.src='static/assets/images/star_fill.png'" onmouseout="this.src='static/assets/images/star_default.png'" />
-        </div>
+    return `
+    <div class="course-item">
+      <img class="course-image" src="static/assets/thumbnails/${this.thumbnail}" alt="Thumbnail">
+      <div class="course-information">
+        <t class="course-title">${this.title}</t>
+        
+        <br>
+        Length: ${this.length}<br>
+        By:
+        <t class="author">${this.author}</t><br><br>
+        <t>${this.description}</t>
+        <br><br><br><br>
       </div>
       <div class="course-footer">
         <img id="${this.like_id}" class="rating" src="static/assets/images/like_default.png" onclick="like('${this.url}')" onmouseover="enterLike('${this.url}')" onmouseout="leaveLike('${this.url}')"/>
         <t id="${this.score_id}" class="rating-value">${this.score}</t>
         <img id="${this.dislike_id}"class="rating" src="static/assets/images/dislike_default.png" onclick="dislike('${this.url}')" onmouseover="enterDislike('${this.url}')" onmouseout="leaveDislike('${this.url}')"/>
-
         <p></p>
-
         <a class="learn-now" href="${this.url}" target="_blank">LEARN</a>
         <p></p>
         <img id="${this.favourite_id}" class="favourite" src="static/assets/images/star_default.png" onclick="togglefavourite('${this.url}')" onmouseover="enterFavourite('${this.url}')" onmouseout="leaveFavourite('${this.url}')" />
@@ -309,18 +293,12 @@ class Course {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  try{
-    document.querySelector("#search").addEventListener("keyup", event => {
-      search();
-    });
-  }
-  catch(e){
-
-  }
+  document.querySelector("#search").addEventListener("keyup", event => {
+    search();
+  });
 
   let courselist = document.getElementById("recommended-list");
-  let html = document.getElementById("html")
-  let favouritelist = document.getElementById("favourites-list");
+  let html = document.getElementById("html");
 
   for (key in data) {
     let title = data[key].title;
@@ -338,23 +316,14 @@ document.addEventListener("DOMContentLoaded", () => {
   courses.sort(() => Math.random() - 0.5);
 
   for (course of courses) {
-    try{
-      courselist.innerHTML += course.generateHTML();
-    }
-    catch(e){
-    }
-  }
-
-  console.log(favouriteCourse.length);
-  for(course of courses){
-    if(course.favourite === true){
-      favouritelist.innerHTML += course.generateHTML();   
-    }
+    courselist.innerHTML += course.generateHTML();
   }
 
 });
 
-function togglefavourite(url){
+function togglefavourite(url) {
+
+  console.log(url);
   for (course of courses) {
     if (course.url === url){
       if(course.favourite === true){
@@ -397,12 +366,12 @@ function getFavourited(course) {
 }
 
 function like(url) {
-	for (course of courses) {
-		if (course.url === url) {
+  for (course of courses) {
+    if (course.url === url) {
       if (course.liked) {
         document.getElementById(course.like_id).src = "static/assets/images/like_default.png";
-  			course.likes -= 1;
-  			course.score -= 1;
+        course.likes -= 1;
+        course.score -= 1;
       }
       else if (!course.liked) {
 
@@ -413,8 +382,8 @@ function like(url) {
       document.getElementById(course.score_id).innerHTML = course.score;
       course.liked = !course.liked;
 
-		}
-	}
+    }
+  }
 }
 
 function enterLike(url) {
@@ -445,7 +414,7 @@ function getLiked(course) {
 }
 
 function dislike(url){
-	for (course of courses) {
+  for (course of courses) {
     if (course.url === url) {
       if (course.disliked) {
         document.getElementById(course.dislike_id).src = "static/assets/images/dislike_default.png";
@@ -492,12 +461,12 @@ function getDisliked(course) {
 }
 
 function update() {
-	let courselist = document.getElementById("recommended-list");
+  let courselist = document.getElementById("recommended-list");
   courselist.innerHTML = "";
-	for (course of courses) {
-   	courselist.innerHTML += course.generateHTML();
+  for (course of courses) {
+    courselist.innerHTML += course.generateHTML();
     getFavourited(course);
     getLiked(course);
     getDisliked(course);
-	}
+  }
 }
