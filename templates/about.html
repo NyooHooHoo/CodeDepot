@@ -43,8 +43,14 @@
 		          <a class="nav-button active-button" href='{{ url_for("about") }}'>About</a>
 		        </li>
 		      </ul>
-			  <a class="log-in-button" href='{{ url_for("login") }}'>Log In</a>
-			  <a class="sign-up-button" href='{{ url_for("signup") }}'>Sign Up</a>
+			  {% if logged_in %}
+		    	<t id="welcome" class="welcome">Hello, {{name}}</t>
+		    	<a class="log-in-button" href='{{ url_for("logout") }}'>Log Out</a>
+			  {% endif %}
+			  {% if logged_in == False %}
+				<a class="log-in-button" href='{{ url_for("login") }}'>Log In</a>
+				<a class="sign-up-button" href='{{ url_for("signup") }}'>Sign Up</a>
+			  {% endif %}
 		    </div>
 		  </div>
 		</nav>

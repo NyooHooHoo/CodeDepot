@@ -213,7 +213,7 @@ let data = {
 }
 
 var courses = [];
-var firstload = true;
+var mainpage = true;
 
 function search() {
   let input = document.getElementById('search').value;
@@ -267,7 +267,7 @@ class Course {
   generateHTML() {
     return `
     <div class="course-item">
-      <img class="course-image" src="static/assets/thumbnails/${this.thumbnail}" alt="Thumbnail">
+      <img class="course-image" src="${g("static/assets/thumbnails/" + this.thumbnail)}" alt="Thumbnail">
       <div class="course-information">
         <t class="course-title">${this.title}</t>
         
@@ -279,13 +279,13 @@ class Course {
         <br><br><br><br>
       </div>
       <div class="course-footer">
-        <img id="${this.like_id}" class="rating" src="static/assets/images/like_default.png" onclick="like('${this.url}')" onmouseover="enterLike('${this.url}')" onmouseout="leaveLike('${this.url}')"/>
+        <img id="${this.like_id}" class="rating" src="${g("static/assets/images/like_default.png")}" onclick="like('${this.url}')" onmouseover="enterLike('${this.url}')" onmouseout="leaveLike('${this.url}')"/>
         <t id="${this.score_id}" class="rating-value">${this.score}</t>
-        <img id="${this.dislike_id}"class="rating" src="static/assets/images/dislike_default.png" onclick="dislike('${this.url}')" onmouseover="enterDislike('${this.url}')" onmouseout="leaveDislike('${this.url}')"/>
+        <img id="${this.dislike_id}"class="rating" src="${g("static/assets/images/dislike_default.png")}" onclick="dislike('${this.url}')" onmouseover="enterDislike('${this.url}')" onmouseout="leaveDislike('${this.url}')"/>
         <p></p>
         <a class="learn-now" href="${this.url}" target="_blank">LEARN</a>
         <p></p>
-        <img id="${this.favourite_id}" class="favourite" src="static/assets/images/star_default.png" onclick="togglefavourite('${this.url}')" onmouseover="enterFavourite('${this.url}')" onmouseout="leaveFavourite('${this.url}')" />
+        <img id="${this.favourite_id}" class="favourite" src="${g("static/assets/images/star_default.png")}" onclick="togglefavourite('${this.url}')" onmouseover="enterFavourite('${this.url}')" onmouseout="leaveFavourite('${this.url}')" />
       
       </div>
     </div>
@@ -309,7 +309,6 @@ function send(courses) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  let mainpage = true;
   try {
     document.querySelector("#search").addEventListener("keyup", event => {
       search();
@@ -317,50 +316,21 @@ document.addEventListener("DOMContentLoaded", () => {
   } catch (e) {
     mainpage = false;
   }
-
-
-  if (firstload) {
-    firstload = false;
     
+  for (key in data) {
+    let title = data[key].title;
+    let length = data[key].length;
+    let author = data[key].author;
+    let description = data[key].description;
+    let url = data[key].url;
+    let thumbnail = data[key].thumbnail;
+    let likes = data[key].likes;
+    let dislikes = data[key].dislikes;
 
-    for (key in data) {
-      let title = data[key].title;
-      let length = data[key].length;
-      let author = data[key].author;
-      let description = data[key].description;
-      let url = data[key].url;
-      let thumbnail = data[key].thumbnail;
-      let likes = data[key].likes;
-      let dislikes = data[key].dislikes;
-
-      let course = new Course(title, length, author, description, url, thumbnail, likes, dislikes);
-      courses.push(course);
-    }
-    courses.sort(() => Math.random() - 0.5);
+    let course = new Course(title, length, author, description, url, thumbnail, likes, dislikes);
+    courses.push(course);
   }
-
-  $.get("/getscoresdata", function(data) {
-    let recieved = $.parseJSON(data)
-
-    for (course of courses) {
-      Object.entries(recieved).forEach(([key, value]) => {
-        if (course.url == key) {
-          course.score = value;
-        }
-      })
-    }      
-  })
-
-  let courselist = document.querySelector(".courses-list");
-
-  for (course of courses) {
-    if (!mainpage) {
-      console.log(course.favourite);
-      courselist.innerHTML += course.generateHTML();
-    }
-    else if (mainpage)
-      courselist.innerHTML += course.generateHTML();
-  }
+  courses.sort(() => Math.random() - 0.5);
 
   $.get("/getusersdata", function(data) {
     let recieved = $.parseJSON(data);
@@ -377,24 +347,56 @@ document.addEventListener("DOMContentLoaded", () => {
                 course.liked = value.liked;
                 course.disliked = value.disliked;
                 course.favourite = value.favourite;
-                update();
                 break;
               }
             }
           });
 
         }
+
       })
     }
+
+    $.get("/getscoresdata", function(data) {
+      let recieved = $.parseJSON(data)
+
+      for (course of courses) {
+        Object.entries(recieved).forEach(([key, value]) => {
+          if (course.url == key) {
+            course.score = value;
+            console.log(course.score)
+          }
+        })
+      }
+
+      let courselist = document.querySelector(".courses-list");
+
+      for (course of courses) {
+        console.log(course.score)
+        if (!mainpage) {
+
+          if (course.favourite === true) {
+            courselist.innerHTML += course.generateHTML();
+          }
+        }
+        else if (mainpage)
+          courselist.innerHTML += course.generateHTML();
+      }
+      if (!mainpage)
+        update_favourite();
+    })
+    
+    console.log(courses);
+
+    
   });
-
-  
-
-  
-
-  
-  
 });
+
+function g(path) {
+  if (mainpage)
+    return path;
+  return "../" + path;
+}
 
 
 function togglefavourite(url) {
@@ -404,11 +406,11 @@ function togglefavourite(url) {
     if (course.url === url){
       if(course.favourite === true){
         course.favourite = false;
-        document.getElementById(course.favourite_id).src = "static/assets/images/star_default.png";
+        document.getElementById(course.favourite_id).src = g("static/assets/images/star_default.png");
       }
       else {
         course.favourite = true;
-        document.getElementById(course.favourite_id).src = "static/assets/images/star_fill.png";
+        document.getElementById(course.favourite_id).src = g("static/assets/images/star_fill.png");
       }
     }
   }
@@ -418,7 +420,7 @@ function togglefavourite(url) {
 function enterFavourite(url) {
   for (course of courses) {
     if (course.url === url) {
-      document.getElementById(course.favourite_id).src = "static/assets/images/star_fill.png";
+      document.getElementById(course.favourite_id).src = g("static/assets/images/star_fill.png");
       break;
     }
   }
@@ -428,7 +430,7 @@ function leaveFavourite(url) {
   for (course of courses) {
     if (course.url === url) {
       if (!course.favourite) {
-        document.getElementById(course.favourite_id).src = "static/assets/images/star_default.png";
+        document.getElementById(course.favourite_id).src = g("static/assets/images/star_default.png");
         break;
       }
     }
@@ -437,22 +439,22 @@ function leaveFavourite(url) {
 
 function getFavourited(course) {
     if (course.favourite)
-      document.getElementById(course.favourite_id).src = "static/assets/images/star_fill.png";
+      document.getElementById(course.favourite_id).src = g("static/assets/images/star_fill.png");
     else
-      document.getElementById(course.favourite_id).src = "static/assets/images/star_default.png";
+      document.getElementById(course.favourite_id).src = g("static/assets/images/star_default.png");
 }
 
 function like(url) {
   for (course of courses) {
     if (course.url === url) {
       if (course.liked) {
-        document.getElementById(course.like_id).src = "static/assets/images/like_default.png";
+        document.getElementById(course.like_id).src = g("static/assets/images/like_default.png");
         course.likes -= 1;
         course.score -= 1;
       }
       else if (!course.liked) {
 
-        document.getElementById(course.like_id).src = "static/assets/images/like_filled.png";
+        document.getElementById(course.like_id).src = g("static/assets/images/like_filled.png");
         course.likes += 1;
         course.score += 1;
       }
@@ -467,7 +469,7 @@ function like(url) {
 function enterLike(url) {
   for (course of courses) {
     if (course.url === url) {
-      document.getElementById(course.like_id).src = "static/assets/images/like_filled.png";
+      document.getElementById(course.like_id).src = g("static/assets/images/like_filled.png");
       break;
     }
   }
@@ -477,7 +479,7 @@ function leaveLike(url) {
   for (course of courses) {
     if (course.url === url) {
       if (!course.liked) {
-        document.getElementById(course.like_id).src = "static/assets/images/like_default.png";
+        document.getElementById(course.like_id).src = g("static/assets/images/like_default.png");
         break;
       }
     }
@@ -486,21 +488,21 @@ function leaveLike(url) {
 
 function getLiked(course) {
     if (course.liked)
-      document.getElementById(course.like_id).src = "static/assets/images/like_filled.png";
+      document.getElementById(course.like_id).src = g("static/assets/images/like_filled.png");
     else
-      document.getElementById(course.like_id).src = "static/assets/images/like_default.png";
+      document.getElementById(course.like_id).src = g("static/assets/images/like_default.png");
 }
 
 function dislike(url){
   for (course of courses) {
     if (course.url === url) {
       if (course.disliked) {
-        document.getElementById(course.dislike_id).src = "static/assets/images/dislike_default.png";
+        document.getElementById(course.dislike_id).src = g("static/assets/images/dislike_default.png");
         course.dislikes += 1;
         course.score += 1;
       }
       else if (!course.disliked) {
-        document.getElementById(course.dislike_id).src = "static/assets/images/dislike_filled.png";
+        document.getElementById(course.dislike_id).src = g("static/assets/images/dislike_filled.png");
         course.likes -= 1;
         course.score -= 1;
       }
@@ -515,7 +517,7 @@ function dislike(url){
 function enterDislike(url) {
   for (course of courses) {
     if (course.url === url) {
-      document.getElementById(course.dislike_id).src = "static/assets/images/dislike_filled.png";
+      document.getElementById(course.dislike_id).src = g("static/assets/images/dislike_filled.png");
       break;
     }
   }
@@ -525,7 +527,7 @@ function leaveDislike(url) {
   for (course of courses) {
     if (course.url === url) {
       if (!course.disliked) {
-        document.getElementById(course.dislike_id).src = "static/assets/images/dislike_default.png";
+        document.getElementById(course.dislike_id).src = g("static/assets/images/dislike_default.png");
         break;
       }
     }
@@ -534,9 +536,13 @@ function leaveDislike(url) {
 
 function getDisliked(course) {
     if (course.disliked)
-      document.getElementById(course.dislike_id).src = "static/assets/images/dislike_filled.png";
+      document.getElementById(course.dislike_id).src = g("static/assets/images/dislike_filled.png");
     else
-      document.getElementById(course.dislike_id).src = "static/assets/images/dislike_default.png";
+      document.getElementById(course.dislike_id).src = g("static/assets/images/dislike_default.png");
+}
+
+function getScore(course) {
+  document.getElementById(course.score_id).innerHTML = course.score;
 }
 
 function update() {
@@ -547,5 +553,21 @@ function update() {
     getFavourited(course);
     getLiked(course);
     getDisliked(course);
+    getScore(course);
+  }
+}
+
+
+function update_favourite() {
+  let courselist = document.querySelector(".courses-list");
+  courselist.innerHTML = "";
+  for (course of courses) {
+    if (course.favourite) {
+      courselist.innerHTML += course.generateHTML();
+      getFavourited(course);
+      getLiked(course);
+      getDisliked(course);
+      getScore(course);
+    }
   }
 }
