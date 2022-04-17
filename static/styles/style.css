@@ -117,6 +117,17 @@ body {
 	padding-top: 0%;
 }
 
+#login-content {
+	height: auto;
+	color: white;
+	margin: auto;
+	margin-top: 100px;
+	text-align: center;
+	padding: 5% 5% 5% 5%;
+	background-color: #1f3a67ff;
+	width: 700px;
+}
+
 .navbar-brand {
 	font-size: 175%;
 }
@@ -392,23 +403,29 @@ footer {
   	}
 }
 
+form {
+	width: 500px;
+	margin: auto;
+}
+
 .smallHeader { 
     padding: 20px;
-    
+	margin: auto;
 }
 
 .submitButton {
- 
     background-color: #ff9900;
     color: white;
     padding: 14px 40px;
-    margin: 40px 40px;
+    margin: auto;
+	margin-top: 40px;
     border: 40px;
     cursor: pointer;
     width: 120px;
     opacity: 0.9;
     transition-duration:.5s;
     border-radius: 7px;
+	display: block;
 }
 
 .submitButton:hover {
@@ -419,24 +436,23 @@ footer {
 .input {
     background-color: #FFFFFF;
     color: black;
-    padding: 14px 50px;
-    margin: 0 40px;
+    padding: 10px 20px;
+    margin: auto;
+
     border: 2px;
     width: 300px;
     transition-duration:.5s;
     border-radius: 4px;
     border-style:solid; 
-   
 }
 
 .smallHeader {
-    padding-left: 40px;
     font-size: 155%;
     color:antiquewhite;
 }
 
 .loginHeader {
-    padding-left:40px;
-    padding-top:40px;
     color:whitesmoke;
+	width: 500px;
+	margin: auto;
 }
