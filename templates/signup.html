@@ -42,6 +42,7 @@
 		          <a class="nav-button" href='{{ url_for("about") }}'>About</a>
 		        </li>
 		      </ul>
+<<<<<<< HEAD
 			  <a class="log-in-button" href='{{ url_for("login") }}'>Log In</a>
 			  <a class="sign-up-button active-sign-up-button" href='{{ url_for("signup") }}'>Sign Up</a>
 		    </div>
@@ -60,6 +61,29 @@
 
 	</body>
     <footer id="login-footer">
+=======
+			  <a class="log-in-button active-log-in-button" href='{{ url_for("login") }}'>Log In</a>
+			  <a class="sign-up-button">Sign Up</a>
+		    </div>
+		  </div>
+		</nav>
+
+		
+			<img class = "avatar" src="assets/avatar.png">
+
+				<h1 class = loginHeader>Login</h1>
+				<form action="#" method="post">
+					<p class="smallHeader">Username</p>
+					<input class="input" type="username" name="usrname" placeholder="Enter Username">
+					<p class="smallHeader">Password</p>
+					<input class="input" type="password" name="psword" placeholder="Enter Password">
+                    <button class="submitButton" type="submit">Sign Up</button>
+    
+				</form>
+
+	</body>
+    <footer>
+>>>>>>> ca7abcedabfbf70e985e14be3cceb8789c7342f8
         <p>Made by The Code Depot Team</p>
         <a href="https://github.com/nelimalu/CodeDepot" target="_blank"><img id="github-link" src="{{ url_for('static',filename='assets/GitHub-Mark/PNG/GitHub-Mark-Light-32px.png') }}"></a>
     </footer>
