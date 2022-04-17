@@ -5,7 +5,8 @@
 body {
 	opacity: 0;
     transition: opacity 1s;
-	background-image: linear-gradient(to right, #1f416e, #315795 30%, #10315c 70%);
+	background-color: #315795;
+	/* background-image: linear-gradient(to right, #1f416e, #315795 30%, #10315c 70%); */
 }
 
 .courses-list {
@@ -500,7 +501,8 @@ form {
 	margin: auto;
 	margin-top: 100px;
 	padding: 5% 5% 5% 5%;
-	background-color: #315795
+	background-color: #315795;
+	border-radius: 7px;
 	width: 700px;
 }
 
