@@ -108,6 +108,15 @@ body {
 	padding-top: 10%;
 }
 
+#about-content {
+	height: auto;
+	color: white;
+	margin: 5px;
+	text-align: center;
+	padding-bottom: 0%;
+	padding-top: 0%;
+}
+
 .navbar-brand {
 	font-size: 175%;
 }
