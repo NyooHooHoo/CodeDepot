@@ -12,6 +12,7 @@ body {
 	height: 100%;
 	margin: 5%;
 	margin-bottom: 25%;
+	margin-top: 3%;
 	display: grid;
 	grid-row-gap: 0.5%;
 	grid-auto-rows: 1fr;
@@ -150,6 +151,7 @@ body {
 
 .main-content {
 	margin: 5%;
+	margin-bottom: 3%;
 }
 
 .author {
