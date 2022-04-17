@@ -218,10 +218,8 @@ let favouriteCourse = [];
 
 function search() {
   let input = document.getElementById('search').value;
-    let courselist = document.getElementById("recommended-list");
-  input = input.toLowerCase();
-	let input = document.getElementById('search').value;
   let courselist = document.getElementById("recommended-list");
+  input = input.toLowerCase();
   let searchResults = document.getElementById("search-results");
   let resultsCount = 0;
 	let inputLower = input.toLowerCase();
@@ -264,7 +262,7 @@ class Course {
     this.likes = likes;
     this.dislikes = dislikes;
     this.favourite = false;
-    this.score = (likes - dislikes).toString();
+    this.score = (likes - dislikes);
   }
 
   generateHTML() {
@@ -315,10 +313,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let thumbnail = data[key].thumbnail;
     let likes = data[key].likes;
     let dislikes = data[key].dislikes;
-
     let course = new Course(title, length, author, description, url, thumbnail, likes, dislikes);
     courses.push(course);
   }
+  console.log("hello");
   courses.sort(() => Math.random() - 0.5);
 
   for (course of courses) {
@@ -379,10 +377,7 @@ function dislike(url){
 }
 
 function update(){
-  let courselist = document.getElementById("recommended-list");
-  for (course of courses) {
-      courselist.innerHTML += course.generateHTML();
-  }
+
 	let courselist = document.getElementById("recommended-list");
   courselist.innerHTML = "";
 	for (course of courses) {
