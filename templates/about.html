@@ -34,11 +34,11 @@
 		          <a class="nav-button" aria-current="page" href='/'>Home</a>
 		        </li>
 		        <li class="nav-button-container">
-		          <a class="nav-button" href='{{ url_for("courses") }}'>Courses</a>
-		        </li>
-		        <li class="nav-button-container">
 		          <a class="nav-button" href='{{ url_for("favourites") }}'>Favourites</a>
 		        </li>
+				<li class="nav-button-container">
+					<a class="nav-button" href='{{ url_for("suggest") }}'>Suggest a Course</a>
+				</li>
 		        <li class="nav-button-container">
 		          <a class="nav-button active-button" href='{{ url_for("about") }}'>About</a>
 		        </li>

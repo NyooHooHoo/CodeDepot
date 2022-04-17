@@ -11,9 +11,9 @@ def home():
 	return render_template("index.html")
 
 
-@app.route("/courses/")
-def courses():
-	return render_template("courses.html")
+@app.route("/suggest/")
+def suggest():
+	return render_template("suggest.html")
 
 
 @app.route("/favourites/")

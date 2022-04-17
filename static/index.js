@@ -232,8 +232,10 @@ function search() {
 		}
 	}
 
-  
-  searchResults.innerHTML += `<h1 class="search-results-title">${resultsCount} results for ${input}</h1>`
+  searchResults.innerHTML = ""
+  if (input.length > 0) {
+    searchResults.innerHTML += `<h1 class="search-results-title">${resultsCount} results for ${input}</h1>`
+  }
    //document.getElementById('search').value = "";
 }
 
@@ -285,12 +287,7 @@ class Course {
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#search").addEventListener("keyup", event => {
-    let input = document.getElementById('search').value;
-    let searchResults = document.getElementById("search-results");
-    searchResults.innerHTML = ""
-    console.log(input);
-    if (input.length > 0)
-      search();
+    search();
   });
 
   let courselist = document.getElementById("recommended-list");
