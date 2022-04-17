@@ -1,11 +1,12 @@
 from flask import Flask, redirect, url_for, render_template, request, session
-from pathlib import Path
+from datetime import timedelta
+import sqlalchemy
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
+app.permanent_session_lifetime = timedelta(days=1)
 
 @app.route("/")
-@app.route("/index/")
 def home():
 	return render_template("index.html")
 
@@ -28,6 +29,7 @@ def about():
 @app.route("/login/", methods=["POST", "GET"])
 def login():
 	if request.method == "POST":
+		session.permanent = True
 		username = request.form['usrnm']
 		password = request.form['pswrd']
 		session['user'] = [username, password]
