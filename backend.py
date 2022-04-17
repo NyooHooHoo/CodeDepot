@@ -34,6 +34,11 @@ def suggest():
 	return render_template("suggest.html")
 
 
+@app.route("/suggest-message/")
+def suggestMessage():
+	return render_template("suggest-message.html")
+
+
 @app.route("/favourites/")
 def favourites():
 	return render_template("favourites.html")
