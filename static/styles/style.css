@@ -6,7 +6,6 @@ body {
 	opacity: 0;
     transition: opacity 1s;
 	background-color: #315795;
-	/* background-image: linear-gradient(to right, #1f416e, #315795 30%, #10315c 70%); */
 }
 
 .welcome {
@@ -323,12 +322,25 @@ h1 {
 }
 
 #about-logo {
+	color: white;
 	font-size: 90px;
 	height: 50%;
 	width: 50%;
 	margin-top: 50px;
 	margin-left: auto;
 	margin-right: auto;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+#suggest-message-logo {
+	color: white;
+	font-size: 90px;
+	height: 50%;
+	width: 40%;
+	margin: auto;
+	padding-top: 30px;
+	padding-bottom: 50px;
 	font-family: sans-serif;
 	font-weight: bold;
 }
@@ -451,6 +463,8 @@ form {
 
 .signupButton {
     background-color: #ff9900;
+	text-decoration: none;
+	text-align: center;
     color: white;
     padding: 10px 10px;
     margin: auto;
@@ -512,6 +526,18 @@ form {
 	color: white;
 	margin: auto;
 	margin-top: 100px;
+	padding: 5% 5% 5% 5%;
+	background-color: #315795;
+	border-radius: 7px;
+	width: 700px;
+}
+
+#suggest-message-content {
+	height: auto;
+	text-align: center;
+	color: white;
+	margin: auto;
+	margin-top: 65px;
 	padding: 5% 5% 5% 5%;
 	background-color: #315795;
 	border-radius: 7px;

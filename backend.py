@@ -66,6 +66,11 @@ def suggest():
 	return render_template("suggest.html", logged_in=False, name="")
 
 
+@app.route("/suggest-message/")
+def suggestMessage():
+	return render_template("suggest-message.html")
+
+
 @app.route("/favourites/")
 def favourites():
 	if "user" in session:
