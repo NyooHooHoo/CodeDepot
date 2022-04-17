@@ -268,7 +268,9 @@ class Course {
   generateHTML() {
       return `
       <div class="course-item">
+        <a href="${this.url}" target="_blank">         
         <img class="course-image" src="static/assets/thumbnails/${this.thumbnail}" alt="Thumbnail">
+        </a>
         <div class="course-information">
           <t class="course-title">${this.title}</t>
           
@@ -288,8 +290,7 @@ class Course {
 
           <a class="learn-now" href="${this.url}" target="_blank">LEARN</a>
           <p></p>
-          <img class="favourite" src="static/assets/images/star_default.png" onclick="togglefavourite()" onmouseover="this.src='static/assets/images/star_fill.png'" onmouseout="this.src='static/assets/images/star_default.png'" />
-        
+          <img class="favourite" src="static/assets/images/star_default.png" onclick="togglefavourite('${this.url}')" onmouseover="this.src='static/assets/images/star_fill.png'" onmouseout="this.src='static/assets/images/star_default.png'" />
         </div>
       </div>
       `;
@@ -297,12 +298,18 @@ class Course {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#search").addEventListener("keyup", event => {
-    search();
-  });
+  try{
+    document.querySelector("#search").addEventListener("keyup", event => {
+      search();
+    });
+  }
+  catch(e){
+
+  }
 
   let courselist = document.getElementById("recommended-list");
-  let html = document.getElementById("html");
+  let html = document.getElementById("html")
+  let favouritelist = document.getElementById("favourites-list");
 
   for (key in data) {
     let title = data[key].title;
@@ -316,40 +323,40 @@ document.addEventListener("DOMContentLoaded", () => {
     let course = new Course(title, length, author, description, url, thumbnail, likes, dislikes);
     courses.push(course);
   }
-  console.log("hello");
   courses.sort(() => Math.random() - 0.5);
 
   for (course of courses) {
-    courselist.innerHTML += course.generateHTML();
+    try{    
+      courselist.innerHTML += course.generateHTML();
+    }
+    catch(e){
+      if(course.favourite === true){
+        favouritelist.innerHTML += course.generateHTML();
+      }
+    }
+
   }
+
 
 });
 
 function togglefavourite(url){
-
-  if (document.getElementById("star").src == "static/assets/images/star_default.png") {
-      document.getElementById("star").src = "static/assets/images/star_fill.png";
-  }
-  else 
-  {
-      document.getElementById("star").src = "static/assets/images/star_default.png";
-  }
-
-  console.log(url);
   for (course of courses) {
     if (course.url === url){
       if(course.favourite === true){
-        course.favourite === false;
+        course.favourite = false;
           for(var i = 0; i < favouriteCourse.length; i++){                
               if (favouriteCourse[i].url === url) { 
                   favouriteCourse.splice(i, 1); 
                   i--; 
+                  console.log(course.title + " Removed");
               }
           }
       }
       else{
-        course.favourite === true;
+        course.favourite = true;
         favouriteCourse.push(course);
+        console.log(course.title + " Added");
       }
     }
   }
