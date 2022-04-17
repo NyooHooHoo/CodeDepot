@@ -5,7 +5,7 @@
 body {
 	opacity: 0;
     transition: opacity 1s;
-	background-color: #315795ff;
+	background-image: linear-gradient(to right, #1f416e, #315795 30%, #10315c 70%);
 }
 
 .courses-list {
@@ -124,8 +124,8 @@ body {
 	margin-top: 100px;
 	text-align: center;
 	padding: 5% 5% 5% 5%;
-	background-color: #1f3a67ff;
 	width: 700px;
+	border-radius: 7px;
 }
 
 .navbar-brand {
@@ -150,6 +150,7 @@ body {
 
 .main-content {
 	margin: 5%;
+	margin-bottom: 3%;
 }
 
 .author {
@@ -411,6 +412,8 @@ form {
 .smallHeader { 
     padding: 20px;
 	margin: auto;
+    font-size: 155%;
+    color:antiquewhite;
 }
 
 .loginButton {
@@ -466,10 +469,6 @@ form {
     border-style:solid; 
 }
 
-.smallHeader {
-    font-size: 155%;
-    color:antiquewhite;
-}
 
 .loginHeader {
     color:whitesmoke;
@@ -480,3 +479,36 @@ form {
 #login-footer {
 	margin-top: 8%;
 }
+
+.input2 {
+    background-color: #FFFFFF;
+    color: black;
+    padding: 5px 20px;
+    margin: auto;
+
+    border: 2px;
+    width: 300px;
+    transition-duration:.5s;
+    border-radius: 1px;
+    border-style:solid; 
+
+}
+
+#suggest-content {
+	height: auto;
+	color: white;
+	margin: auto;
+	margin-top: 100px;
+	padding: 5% 5% 5% 5%;
+	background-color: #315795
+	width: 700px;
+}
+
+.smallHeader2 { 
+    padding-top:15px;
+    padding-bottom:15px;
+	margin: auto;
+    font-size: 155%;
+    color:antiquewhite;
+}
+

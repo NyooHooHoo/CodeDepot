@@ -11,7 +11,7 @@ let data = {
     },
     2: {
       "title": "Crash Course on Java",
-      "length": "13:59",
+      "length": "00:13:59",
       "author": "Alex Lee",
       "description": "Learn Java in 14 Minutes (seriously)",
       "url": "https://www.youtube.com/watch?v=RRubcjpTkks",
@@ -31,7 +31,7 @@ let data = {
     },
     4: {
       "title": "C++ Crash Course",
-      "length": "26:29",
+      "length": "00:26:29",
       "author": "Simplilearn",
       "description": "C++ Basics For Beginners | Learn C++ Programming | C++ Tutorial For Beginners | Simplilearn",
       "url": "https://www.youtube.com/watch?v=McojvctVsUs",
@@ -91,7 +91,7 @@ let data = {
     },
     10: {
       "title": "15 Minute SQL Rundown",
-      "length": "17:39",
+      "length": "00:17:39",
       "author": "LearnBI.online",
       "description": "Learn Basic SQL in 15 Minutes | Business Intelligence For Beginners | SQL Tutorial For Beginners",
       "url": "https://www.youtube.com/watch?v=kbKty5ZVKMY",
@@ -161,7 +161,7 @@ let data = {
     },
     17: {
       "title": "JavaScript in 5 Minutes",
-      "length": "5:14",
+      "length": "00:05:14",
       "author": "Aaron Jack",
       "description": "Learn the most important parts of 2020 Javascript in just 5 minutes",
       "url": "https://www.youtube.com/watch?v=c-I5S_zTwAc",
@@ -181,7 +181,7 @@ let data = {
     },
     19: {
       "title": "What is an API?",
-      "length": "7:12",
+      "length": "00:07:12",
       "author": "CodeWithChris",
       "description": "Discover what is an API and how you can use one to perform powerful integrations with other systems.",
       "url": "https://www.youtube.com/watch?v=Yzx7ihtCGBs",
@@ -336,8 +336,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
   }
-
-
 });
 
 function togglefavourite(url){
@@ -384,7 +382,6 @@ function dislike(url){
 }
 
 function update(){
-
 	let courselist = document.getElementById("recommended-list");
   courselist.innerHTML = "";
 	for (course of courses) {
