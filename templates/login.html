@@ -56,6 +56,9 @@
 				<input class="input" type="password" name="pswrd" placeholder="Enter Password">
 				<button class="loginButton" type="submit">Login</button>
 			</form>
+			{% if usernotfound %}
+				<t class="wrong">Username or password is incorrect.</t>
+			{% endif %}
 		</div>
 
 	</body>

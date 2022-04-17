@@ -9,6 +9,16 @@ body {
 	/* background-image: linear-gradient(to right, #1f416e, #315795 30%, #10315c 70%); */
 }
 
+.welcome {
+	margin-right: 10px;
+	color: white;
+}
+
+.wrong {
+	color: red;
+	padding-top: 20px;
+}
+
 .courses-list {
 	height: 100%;
 	margin: 5%;
