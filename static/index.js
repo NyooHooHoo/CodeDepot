@@ -356,7 +356,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       })
     }
-    
 
     $.get("/getscoresdata", function(data) {
       let recieved = $.parseJSON(data)
@@ -369,25 +368,28 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         })
       }
-    })
 
-    let courselist = document.querySelector(".courses-list");
+      let courselist = document.querySelector(".courses-list");
 
-    for (course of courses) {
-      if (!mainpage) {
+      for (course of courses) {
         console.log(course.score)
-        if (course.favourite === true) {
-          courselist.innerHTML += course.generateHTML();
-        }
-      }
-      else if (mainpage)
-        courselist.innerHTML += course.generateHTML();
-    }
-    if (!mainpage)
-      update_favourite();
-  });
+        if (!mainpage) {
 
-  
+          if (course.favourite === true) {
+            courselist.innerHTML += course.generateHTML();
+          }
+        }
+        else if (mainpage)
+          courselist.innerHTML += course.generateHTML();
+      }
+      if (!mainpage)
+        update_favourite();
+    })
+    
+    console.log(courses);
+
+    
+  });
 });
 
 function g(path) {
