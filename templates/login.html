@@ -33,11 +33,11 @@
 		          <a class="nav-button" aria-current="page" href='/'>Home</a>
 		        </li>
 		        <li class="nav-button-container">
-		          <a class="nav-button active-button" href='{{ url_for("courses") }}'>Courses</a>
-		        </li>
-		        <li class="nav-button-container">
 		          <a class="nav-button" href='{{ url_for("favourites") }}'>Favourites</a>
 		        </li>
+				<li class="nav-button-container">
+					<a class="nav-button" href='{{ url_for("suggest") }}'>Suggest a Course</a>
+				</li>
 		        <li class="nav-button-container">
 		          <a class="nav-button" href='{{ url_for("about") }}'>About</a>
 		        </li>
@@ -47,21 +47,20 @@
 		    </div>
 		  </div>
 		</nav>
-
-		<div id="loginbox">
-			<img class = "avatar" src="assets/avatar.png">
-				<h1>Login</h1>
-				<form>
-					<p>Username</p>
-					<input type="usernmae" name="" placeholder="Enter Username">
-					<p>Password</p>
-					<input type="password" name="" placeholder="Enter Password">
-				</form>
+		<div id="login-content">
+			<h1 class = loginHeader>Login</h1>
+			<form action="#" method="post">
+				<p class="smallHeader">Username</p>
+				<input class="input" type="username" name="usrnm" placeholder="Enter Username">
+				<p class="smallHeader">Password</p>
+				<input class="input" type="password" name="pswrd" placeholder="Enter Password">
+				<button class="submitButton" type="submit">Login</button>
+			</form>
 		</div>
 
 	</body>
     <footer>
         <p>Made by The Code Depot Team</p>
-        <a href="https://github.com/nelimalu/CodeDepot" target="_blank"><img id="github-link" src="assets/GitHub-Mark/PNG/GitHub-Mark-Light-32px.png"></a>
+        <a href="https://github.com/nelimalu/CodeDepot" target="_blank"><img id="github-link" src="{{ url_for('static',filename='assets/GitHub-Mark/PNG/GitHub-Mark-Light-32px.png') }}"></a>
     </footer>
 </html>

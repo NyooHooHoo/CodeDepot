@@ -108,6 +108,26 @@ body {
 	padding-top: 10%;
 }
 
+#about-content {
+	height: auto;
+	color: white;
+	margin: 5px;
+	text-align: center;
+	padding-bottom: 0%;
+	padding-top: 0%;
+}
+
+#login-content {
+	height: auto;
+	color: white;
+	margin: auto;
+	margin-top: 100px;
+	text-align: center;
+	padding: 5% 5% 5% 5%;
+	background-color: #1f3a67ff;
+	width: 700px;
+}
+
 .navbar-brand {
 	font-size: 175%;
 }
@@ -156,22 +176,19 @@ body {
 	font-weight: bold;
 }
 
-.top-picks-title {
+.search-results-title {
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
 	font-family: sans-serif;
-	font-size: 300%;
-}
-
-#top-10 {
-	color: #ff9900;
-	font-weight: bold;
-	font-family: sans-serif;
+	font-size: 200%;
 }
 
 #search {
 	width: 40%;
 	padding: 10px;
+	padding-bottom: 6px;
 	padding-left: 20px;
   	border: none;
   	outline: none;
@@ -339,7 +356,7 @@ h1 {
 }
 
 footer {
-	margin-top: 5%;
+	margin-top: 10%;
 	width: 100%;
 	background: #1f3a67ff;
 	color: grey;
@@ -384,4 +401,58 @@ footer {
 	#search {
     	width: 70%;
   	}
+}
+
+form {
+	width: 500px;
+	margin: auto;
+}
+
+.smallHeader { 
+    padding: 20px;
+	margin: auto;
+}
+
+.submitButton {
+    background-color: #ff9900;
+    color: white;
+    padding: 14px 40px;
+    margin: auto;
+	margin-top: 40px;
+    border: 40px;
+    cursor: pointer;
+    width: 120px;
+    opacity: 0.9;
+    transition-duration:.5s;
+    border-radius: 7px;
+	display: block;
+}
+
+.submitButton:hover {
+    color:white; 
+    background-color: #CC5500;
+}
+
+.input {
+    background-color: #FFFFFF;
+    color: black;
+    padding: 10px 20px;
+    margin: auto;
+
+    border: 2px;
+    width: 300px;
+    transition-duration:.5s;
+    border-radius: 4px;
+    border-style:solid; 
+}
+
+.smallHeader {
+    font-size: 155%;
+    color:antiquewhite;
+}
+
+.loginHeader {
+    color:whitesmoke;
+	width: 500px;
+	margin: auto;
 }

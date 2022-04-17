@@ -34,11 +34,11 @@
 		          <a class="nav-button" aria-current="page" href='/'>Home</a>
 		        </li>
 		        <li class="nav-button-container">
-		          <a class="nav-button" href='{{ url_for("courses") }}'>Courses</a>
-		        </li>
-		        <li class="nav-button-container">
 		          <a class="nav-button" href='{{ url_for("favourites") }}'>Favourites</a>
 		        </li>
+				<li class="nav-button-container">
+					<a class="nav-button" href='{{ url_for("suggest") }}'>Suggest a Course</a>
+				</li>
 		        <li class="nav-button-container">
 		          <a class="nav-button active-button" href='{{ url_for("about") }}'>About</a>
 		        </li>
@@ -50,7 +50,7 @@
 		</nav>
 		
 
-		<div id="content">
+		<div id="about-content">
 			<h1 id="about-title">About Us</h1>
 			<div id="about-text">
 				<p>Code Depot is the quickest and easiest way to find free online courses for any of your programming endeavours. Simply choose from our collection of handpicked video series and begin your coding journey, free of charge!</p>	
@@ -93,6 +93,6 @@
 	</body>
 	<footer>
 		<p>Made by The Code Depot Team</p>
-		<a href="https://github.com/nelimalu/CodeDepot" target="_blank"><img id="github-link" src="assets/GitHub-Mark/PNG/GitHub-Mark-Light-32px.png"></a>
+		<a href="https://github.com/nelimalu/CodeDepot" target="_blank"><img id="github-link" src="{{ url_for('static',filename='assets/GitHub-Mark/PNG/GitHub-Mark-Light-32px.png') }}"></a>
 	</footer>
 </html>

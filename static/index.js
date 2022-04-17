@@ -220,8 +220,13 @@ function search() {
   let input = document.getElementById('search').value;
     let courselist = document.getElementById("recommended-list");
   input = input.toLowerCase();
+	let input = document.getElementById('search').value;
+  let courselist = document.getElementById("recommended-list");
+  let searchResults = document.getElementById("search-results");
+  let resultsCount = 0;
+	let inputLower = input.toLowerCase();
 
-    courselist.innerHTML = "";
+  courselist.innerHTML = "";
 
   for (course of courses) {
     if (course.title.toLowerCase().includes(input) ||
@@ -231,6 +236,19 @@ function search() {
     }
   }
 
+	for (course of courses) {
+		if (course.title.toLowerCase().includes(inputLower) ||
+        course.author.toLowerCase().includes(inputLower) ||
+        course.description.toLowerCase().includes(inputLower)) {
+      courselist.innerHTML += course.generateHTML();
+      resultsCount += 1;
+		}
+	}
+
+  searchResults.innerHTML = ""
+  if (input.length > 0) {
+    searchResults.innerHTML += `<h1 class="search-results-title">${resultsCount} results for ${input}</h1>`
+  }
    //document.getElementById('search').value = "";
 }
 
@@ -283,13 +301,6 @@ class Course {
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#search").addEventListener("keyup", event => {
     search();
-    //event.preventDefault();
-    /*if (event.key !== "Enter") {
-      search();
-    } else {
-      search();
-      event.preventDefault();
-    }*/
   });
 
   let courselist = document.getElementById("recommended-list");

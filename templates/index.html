@@ -65,11 +65,11 @@
 		          <a class="nav-button active-button" aria-current="page" href='/'>Home</a>
 		        </li>
 		        <li class="nav-button-container">
-		          <a class="nav-button" href='{{ url_for("courses") }}'>Courses</a>
-		        </li>
-		        <li class="nav-button-container">
 		          <a class="nav-button" href='{{ url_for("favourites") }}'>Favourites</a>
 		        </li>
+				<li class="nav-button-container">
+					<a class="nav-button" href='{{ url_for("suggest") }}'>Suggest a Course</a>
+				</li>
 		        <li class="nav-button-container">
 		          <a class="nav-button" href='{{ url_for("about") }}'>About</a>
 		        </li>
@@ -91,7 +91,9 @@
 					<button class="search-button" onclick="search()"></button>
 				</div>
 			</div>
-			<h1 class="top-picks-title">Start with our <span id="top-10">Top 10</span> Picks:</h1>
+			<div id="search-results">
+				
+			</div>
 			<div id="recommended-list" class="courses-list">
 
 			</div>
