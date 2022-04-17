@@ -6,7 +6,6 @@ body {
 	opacity: 0;
     transition: opacity 1s;
 	background-color: #315795;
-	/* background-image: linear-gradient(to right, #1f416e, #315795 30%, #10315c 70%); */
 }
 
 .courses-list {
