@@ -25,8 +25,6 @@ class users(db.Model):
 
 @app.route("/")
 def home():
-	
-
 	if "user" in session:
 		return render_template("index.html", logged_in=True, name=session['user'][0])
 	return render_template("index.html", logged_in=False, name="")
@@ -63,17 +61,23 @@ def get_users_data():
 
 @app.route("/suggest/")
 def suggest():
-	return render_template("suggest.html")
+	if "user" in session:
+		return render_template("suggest.html", logged_in=True, name=session['user'][0])
+	return render_template("suggest.html", logged_in=False, name="")
 
 
 @app.route("/favourites/")
 def favourites():
-	return render_template("favourites.html")
+	if "user" in session:
+		return render_template("favourites.html", logged_in=True, name=session['user'][0])
+	return render_template("favourites.html", logged_in=False, name="")
 
 
 @app.route("/about/")
 def about():
-	return render_template("about.html")
+	if "user" in session:
+		return render_template("about.html", logged_in=True, name=session['user'][0])
+	return render_template("about.html", logged_in=False, name="")
 
 @app.route("/signup/", methods=["POST", "GET"])
 def signup():

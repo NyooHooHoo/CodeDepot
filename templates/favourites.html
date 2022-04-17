@@ -71,15 +71,26 @@
 		          <a class="nav-button" href='{{ url_for("about") }}'>About</a>
 		        </li>
 		      </ul>
-			  <a class="log-in-button" href='{{ url_for("login") }}'>Log In</a>
-			  <a class="sign-up-button" href='{{ url_for("signup") }}'>Sign Up</a>
+			  {% if logged_in %}
+		    	<t id="welcome" class="welcome">Hello, {{name}}</t>
+		    	<a class="log-in-button" href='{{ url_for("logout") }}'>Log Out</a>
+			  {% endif %}
+			  {% if logged_in == False %}
+				<a class="log-in-button" href='{{ url_for("login") }}'>Log In</a>
+				<a class="sign-up-button" href='{{ url_for("signup") }}'>Sign Up</a>
+			  {% endif %}
 		    </div>
 		  </div>
 		</nav>
 
 		<div id="content">
 			<h1 id="favourites-title">Your Favourite Courses</h1>
-			<p>Click on the star at the bottom of any course to add it to your favourites list!</p>	
+			{% if logged_in %}
+				<p>Click on the star at the bottom of any course to add it to your favourites list!</p>
+			{% endif %}
+			{% if logged_in == False %}
+				<p class="wrong">Please log in to use this feature.</p>
+			{% endif %}
 			<div class="courses-list">
 
 			</div>
